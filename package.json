@@ -22,10 +22,11 @@
     "eslint-config-htmlacademy": "10.0.1",
     "rimraf": "5.0.5",
     "ts-node": "10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "5.4.3"
   },
   "engines": {
-    "node": "^20.11.30",
+    "node": "^20.11.10",
     "npm": ">=8"
   }
 }

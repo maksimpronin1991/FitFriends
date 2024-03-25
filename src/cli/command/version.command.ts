@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { Command } from "./commang.interface.js";
+import { Command } from "./command.interface.js";
 
 
 type PackegeJSONConfig = {

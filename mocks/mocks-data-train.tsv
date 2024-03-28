@@ -1,5 +1,5 @@
-Training 1	image1.jpg	новичок	йога	30-50 мин	500	2000	Description of training 1	для женщин	video1.mp4	0	Trainer 1	участвует
-Training 2	image2.jpg	любитель	бег	50-80 мин	300	3000	Description of training 2	для всех	video2.mp4	0	Trainer 2	не участвует
-Training 3	image3.jpg	профессионал	бокс	80-100 мин	5000	4000	Description of training 3	для мужчин	video3.mp4	0	Trainer 3	участвует
-Training 4	image4.jpg	новичок	кроссфит	10-30 мин	0	3000	Description of training 4	для всех	video4.mp4	0	Trainer 4	участвует
-Training 5	image5.jpg	любитель	стрейчинг	30-50 мин	1000	4000	Description of training 5	для женщин	video5.mp4	0	Trainer 5	не участвует
+Training 1	image1.jpg	новичок	йога	30-50 мин	500	2000	Description of training 1	для женщин	video1.mp4	0	Trainer 1	true
+Training 2	image2.jpg	любитель	бег	50-80 мин	300	3000	Description of training 2	для всех	video2.mp4	0	Trainer 2	false
+Training 3	image3.jpg	профессионал	бокс	80-100 мин	5000	4000	Description of training 3	для мужчин	video3.mp4	0	Trainer 3	true
+Training 4	image4.jpg	новичок	кроссфит	10-30 мин	0	3000	Description of training 4	для всех	video4.mp4	0	Trainer 4	true
+Training 5	image5.jpg	любитель	стрейчинг	30-50 мин	1000	4000	Description of training 5	для женщин	video5.mp4	0	Trainer 5	false

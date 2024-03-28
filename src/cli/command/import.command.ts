@@ -7,8 +7,8 @@ export class ImportCommand implements Command {
   }
 
   public execute(...parametrs: string[]): void {
-    const [filePath] = parametrs;
-    const fileReader = new TSVFileReader(filePath.trim());
+    const [filePath,type] = parametrs;
+    const fileReader = new TSVFileReader(filePath.trim(),type.trim());
 
     try{
       fileReader.read();

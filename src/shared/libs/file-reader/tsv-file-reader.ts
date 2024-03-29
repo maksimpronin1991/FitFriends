@@ -13,7 +13,7 @@ export class TSVFileReader implements FileReader {
     this.rawData = readFileSync(this.filename, { encoding: 'utf-8' });
   }
 
-  public toArray(): unknown {
+  public toArray(): any {
     if (!this.rawData) {
       throw new Error('File was not read');
     }

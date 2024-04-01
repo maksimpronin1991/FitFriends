@@ -23,7 +23,7 @@ export class TSVFileReader implements FileReader {
         .split('\n')
         .filter((row) => row.trim().length > 0)
         .map((line) => line.trimEnd().split('\t'))
-        .map(([
+        .map(([  
           name,
           email,
           avatar,

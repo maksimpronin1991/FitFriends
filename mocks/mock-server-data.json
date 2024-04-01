@@ -1,0 +1,369 @@
+{
+  "api": {
+    "user": {
+      "names": [
+        "Max",
+        "Helga",
+        "Gosh",
+        "Sandra",
+        "Victoria"
+      ],
+      "emails": [
+        "4dKpU@example.com",
+        "UqCt6@example.com",
+        "gosh@ya.ru",
+        "sandra@ya.ru",
+        "victoria@ya.ru"
+      ],
+      "avatars": [
+        "https://randomuser.me/api/portraits/men/1.jpg",
+        "https://randomuser.me/api/portraits/women/1.jpg",
+        "https://randomuser.me/api/portraits/men/2.jpg",
+        "https://randomuser.me/api/portraits/women/2.jpg",
+        "https://randomuser.me/api/portraits/men/3.jpg"
+      ],
+      "passwords": [
+        "111111",
+        "222222",
+        "333333",
+        "444444",
+        "555555"
+      ],
+      "genders": [
+        "male",
+        "female"
+      ],
+      "birthdays": [
+        "01.01.2000",
+        "02.02.2001",
+        "03.03.2002",
+        "04.04.2003",
+        "05.05.2004"
+      ],
+      "roles": [
+        "user",
+        "trainer"
+      ],
+      "descriptions": [
+        "I am a user this app",
+        "I am a trainer this app",
+        "I am a admin this app",
+        "I am a super admin this app",
+        "I am a super user this app"
+      ],
+      "locations": [
+        "Пионерская",
+        "Петроградская",
+        "Удельная",
+        "Звёздная",
+        "Спортивная"
+      ],
+      "images": [
+        "https://randomuser.me/api/portraits/men/1.jpg",
+        "https://randomuser.me/api/portraits/women/1.jpg",
+        "https://randomuser.me/api/portraits/men/2.jpg",
+        "https://randomuser.me/api/portraits/women/2.jpg",
+        "https://randomuser.me/api/portraits/men/3.jpg"
+      ],
+      "createdAt": [
+        "01.01.2022",
+        "02.02.2022",
+        "03.03.2022",
+        "04.04.2022",
+        "05.05.2022"
+      ],
+      "trainingLevels": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "trainingTypes": [
+        "yoga",
+        "running",
+        "boxing",
+        "weightlifting",
+        "crossfit",
+        "aerobics",
+        "pilates"
+      ],
+      "trainingDuration": [
+        "10-30 min",
+        "30-50 min",
+        "50-80 min",
+        "80-100 min"
+      ],
+      "caloriesPerDay": [
+        "1000",
+        "2000",
+        "3000",
+        "4000",
+        "5000"
+      ],
+      "caloriesPerWorkout": [
+        "1000",
+        "2000",
+        "3000",
+        "4000",
+        "5000"
+      ],
+      "isAvailableForTraining": [
+        "true",
+        "false"
+      ],
+      "certificates": [
+        "https://randomuser.me/api/portraits/men/11.jpg",
+        "https://randomuser.me/api/portraits/women/12.jpg",
+        "https://randomuser.me/api/portraits/men/23.jpg"
+      ],
+      "achievements": [
+        "top trainer from German",
+        "top trainer from Russia",
+        "best body 2022",
+        "fast runner 2021",
+        "best body 2021"
+      ],
+      "privateTraining": [
+        "true",
+        "false"
+      ]
+    },
+    "balance": {
+      "trainings": [
+        "10",
+        "20",
+        "30",
+        "40",
+        "50"
+      ],
+      "quantityesTraining": [
+        "10",
+        "20",
+        "30",
+        "40",
+        "50"
+      ]
+    },
+    "train": {
+      "titles": [
+        "yoga",
+        "running",
+        "boxing",
+        "weightlifting",
+        "crossfit"
+      ],
+      "backgroundImages": [
+        "https://randomuser.me/api/portraits/men/11.jpg",
+        "https://randomuser.me/api/portraits/women/12.jpg",
+        "https://randomuser.me/api/portraits/men/23.jpg",
+        "https://randomuser.me/api/portraits/women/23.jpg",
+        "https://randomuser.me/api/portraits/men/43.jpg"
+      ],
+      "levels": [
+        "beginner",
+        "amateur",
+        "professional"
+      ],
+      "trainingTypes": [
+        "yoga",
+        "runningboxing",
+        "stretching",
+        "crossfit",
+        "aerobics",
+        "pilates"
+      ],
+      "durations": [
+        "10-30 min",
+        "30-50 min",
+        "50-80 min",
+        "80-100 min"
+      ],
+      "prices": [
+        "1000",
+        "2000",
+        "3000",
+        "4000",
+        "5000"
+      ],
+      "calories": [
+        "1000",
+        "2000",
+        "3000",
+        "4000",
+        "5000"
+      ],
+      "descriptions": [
+        "it will be best training in your live",
+        "it training for your strong",
+        "it will be top training in your day",
+        "musle training with body belt"
+      ],
+      "genders": [
+        "male",
+        "female",
+        "all"
+      ],
+      "videos": [
+        "https://randomuser.me/api/portraits/men/11.jpg",
+        "https://randomuser.me/api/portraits/women/12.jpg",
+        "https://randomuser.me/api/portraits/men/23.jpg"
+      ],
+      "ratings": [
+        "5",
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "trainers": [
+        "Dolf Lungren",
+        "Benny Benassy",
+        "Arnold",
+        "Gold Retriver",
+        "Faker"
+      ],
+      "specialOffers": [
+        "true",
+        "false"
+      ]
+    },
+    "review": {
+      "authors": [
+        "Vika from five floors",
+        "Your neighbor",
+        "Sasha",
+        "Antonina Semenovna",
+        "Sergey"
+      ],
+      "trainings": [
+        "yoga",
+        "running",
+        "boxing",
+        "weightlifting",
+        "crossfit",
+        "aerobics",
+        "pilates"
+      ],
+      "ratings": [
+        "5",
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "texts": [
+        "it was my best training i won 5 times and i love it too,I thought the course was fantastic. The pace was just right and the instructor made the course very engagingI thought the course was fantastic. The pace was just right and the instructor made the course very engaging",
+        "it was my best training i won 4 times and i love it too, Exactly what I was expecting: a very practical and focused learning experience with great content, great case studies and hugly interactive. It provides a great framework to work better and faster in the valuation M&A space. From my point of view a must for any analysts and even more senior people wanting to refresh their skills.",
+        "it was my best training i won 3 times and i love it too, The course was well prepared with great content and structure, yet the instructor customized the topics of the course for our needs. Thanks Serge! ",
+        "it was my best training i won 2 times and i love it too,  “They did a great job in making sure that we all understood and additional information was given on topics outside of building the model, which was very helpful.”"
+      ],
+      "createdAts": [
+        "01.01.2022",
+        "02.02.2022",
+        "03.03.2022",
+        "04.04.2022",
+        "05.05.2022"
+      ]
+    },
+    "trainingRequest": {
+      "initiators": [
+        "Dolf Lungren",
+        "Benny Benassy",
+        "Arnold",
+        "Gold Retriver",
+        "Faker"
+      ],
+      "users": [
+        "Max",
+        "Helga",
+        "Gosh",
+        "Sandra",
+        "Victoria"
+      ],
+      "dateCreated": [
+        "01.01.2022",
+        "02.02.2022",
+        "03.03.2022",
+        "04.04.2022",
+        "05.05.2022"
+      ],
+      "dateStatusChanged": [
+        "01.01.2022",
+        "02.02.2022",
+        "03.03.2022",
+        "04.04.2022",
+        "05.05.2022"
+      ],
+      "requestStatuses": [
+        "under review",
+        "rejected"
+      ]
+    },
+    "order": {
+      "viewOrders": [
+        "abonement"
+      ],
+      "services": [
+        "12355",
+        "12356",
+        "12357",
+        "12358",
+        "12359"
+      ],
+      "prices": [
+        "1000",
+        "2000",
+        "3000",
+        "4000",
+        "5000"
+      ],
+      "quantitys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "orderPrices": [
+        "1000",
+        "2000",
+        "3000",
+        "4000",
+        "5000"
+      ],
+      "payMethods": [
+        "visa",
+        "mir",
+        "umoney"
+      ],
+      "createdOrderDates": [
+        "01.01.2022",
+        "02.02.2022",
+        "03.03.2022",
+        "04.04.2022",
+        "05.05.2022"
+      ]
+    },
+    "notification": {
+      "dates":[
+        "01.01.2022",
+        "02.02.2022",
+        "03.03.2022",
+        "04.04.2022",
+        "05.05.2022"
+      ],
+      "users":[
+        "Max",
+        "Helga",
+        "Gosh",
+        "Sandra",
+        "Victoria"
+      ],
+      "messages":[
+        "Hello, trining today",
+        "Hello, training tomorrow",
+        "Hello, your training is over",
+        "Hello, your training complited"
+      ]
+    }
+  }
+}

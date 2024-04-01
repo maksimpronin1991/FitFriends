@@ -1,0 +1,15 @@
+export type MockTrainDate = {
+  titles: string[]
+  backgroundImages: string[]
+  levels: string[]
+  trainingTypes: string[]
+  durations: string[]
+  prices: string[]
+  calories: string[]
+  descriptions: string[]
+  genders: string[]
+  videos: string[]
+  ratings: string[]
+  trainers: string[]
+  specialOffers: string[]
+}

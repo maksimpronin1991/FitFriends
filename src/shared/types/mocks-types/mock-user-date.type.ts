@@ -14,6 +14,7 @@ export type MockUserDate = {
   trainingTypes: string[]
   trainingDurations: string[]
   caloriesPerDay: string[]
+  caloriesPerWorkout:string[]
   isAvailableForTraining: string[]
   certificates: string[]
   achievements: string[]

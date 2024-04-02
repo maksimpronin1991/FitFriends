@@ -28,7 +28,10 @@
     "typescript": "5.4.3"
   },
   "engines": {
-    "node": "^20.11.10",
+    "node": "^20.11.1",
     "npm": ">=8"
+  },
+  "dependencies": {
+    "got": "14.2.1"
   }
 }

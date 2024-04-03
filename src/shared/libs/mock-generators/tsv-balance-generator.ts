@@ -5,11 +5,16 @@ import { MockBalanceData } from '../../types/mocks-types/mock-balance-data.type.
 
 
 export class TSVBalanceGenerator implements Generator {
-  constructor(private readonly mockData: MockBalanceData) {}
+  constructor(
+    private readonly mockData: MockBalanceData
+    ) {}
 
   public generate(): string {
-    const training = getRandomItem<string>(this.mockData.training);
     const quantityTraining = getRandomItem<string>(this.mockData.quantityTraining);
+    console.log(1)
+    const training = getRandomItem<string>(this.mockData.training);
+
+   
 
     return [
       training,

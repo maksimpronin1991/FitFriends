@@ -1,3 +1,5 @@
+import { getErrorMessage } from "../../shared/helpers/common.js";
+import { createEntity } from "../../shared/helpers/entity.js";
 import { TSVFileReader } from "../../shared/libs/file-reader/tsv-file-reader.js";
 import { Command } from "./command.interface.js";
 
@@ -6,20 +8,28 @@ export class ImportCommand implements Command {
     return '--import';
   }
 
-  public execute(...parametrs: string[]): void {
+  private onImportedLine(line: string,type:string) {
+    const entity = createEntity(line,type);
+    console.info(entity);
+  }
+
+  private onCompleteImport(count: number) {
+    console.info(`${count} rows imported.`);
+  }
+
+  public async execute(...parametrs: string[]): Promise<void> {
     const [filePath,type] = parametrs;
     const fileReader = new TSVFileReader(filePath.trim(),type.trim());
 
-    try{
-      fileReader.read();
-      console.log(fileReader.toArray());
-    }catch(err) {
-      if(!(err instanceof Error)) {
-        throw err;
-      }
 
+    fileReader.on('line', this.onImportedLine);
+    fileReader.on('end', this.onCompleteImport);
+
+    try{
+      await fileReader.read();
+    }catch(error) {
       console.error(`can't read file: ${filePath}`);
-      console.error(`Details: ${err.message}`);
+      console.error(getErrorMessage(error));
     }
   }
 }

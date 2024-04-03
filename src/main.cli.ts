@@ -3,6 +3,7 @@ import { CLIApplication,HelpCommand,VersionCommand,ImportCommand, GenerateComman
 
 
 function bootstrap() {
+
   const cliApplication = new CLIApplication();
   cliApplication.registerCommands([
     new HelpCommand(),

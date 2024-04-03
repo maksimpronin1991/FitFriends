@@ -1,11 +1,11 @@
-import { OfferGenerator } from './tsv-generator.interface.js';
+import { Generator } from './tsv-generator.interface.js';
 import {  getRandomItem } from '../../helpers/index.js';
-import { MockNotificationDate } from '../../types/mocks-types/mock-notification-data.type.js';
+import { MockNotificationData } from '../../types/mocks-types/mock-notification-data.type.js';
 
 
 
-export class TSVNotifyGenerator implements OfferGenerator {
-  constructor(private readonly mockData: MockNotificationDate) {}
+export class TSVNotifyGenerator implements Generator {
+  constructor(private readonly mockData: MockNotificationData) {}
 
   public generate(): string {
     const date = getRandomItem<string>(this.mockData.dates);

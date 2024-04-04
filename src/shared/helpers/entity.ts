@@ -148,6 +148,7 @@ export function createEntity(entityData: string, type: string): unknown {
   }
 
   if (type === 'balance') {
+    console.log(1)
     return entityData
       .split('\n')
       .filter((row) => row.trim().length > 0)

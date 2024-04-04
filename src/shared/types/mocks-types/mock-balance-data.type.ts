@@ -1,4 +1,4 @@
 export type MockBalanceData = {
-  training: string[]
-  quantityTraining: string[] 
+  trainings: string[]
+  quantityesTraining: string[] 
 } 

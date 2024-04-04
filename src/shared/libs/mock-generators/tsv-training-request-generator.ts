@@ -1,10 +1,10 @@
-import { OfferGenerator } from './tsv-generator.interface.js';
+import { Generator } from './tsv-generator.interface.js';
 import { MockTrainingRequestDate } from '../../types/mocks-types/index.js';
 import {  getRandomItem } from '../../helpers/index.js';
 
 
 
-export class TSVRequestGenerator implements OfferGenerator {
+export class TSVRequestGenerator implements Generator {
   constructor(private readonly mockData: MockTrainingRequestDate) {}
 
   public generate(): string {

@@ -18,8 +18,8 @@ export class ImportCommand implements Command {
   }
 
   public async execute(...parametrs: string[]): Promise<void> {
-    const [filePath,type] = parametrs;
-    const fileReader = new TSVFileReader(filePath.trim(),type.trim());
+    const [filePath] = parametrs;
+    const fileReader = new TSVFileReader(filePath.trim());
 
 
     fileReader.on('line', this.onImportedLine);

@@ -8,7 +8,6 @@ const CHUNK_SIZE = 16384;
 export class TSVFileReader extends EventEmitter implements FileReader {
   constructor(
     private readonly filename: string,
-    private readonly type: string
   ) {
     super();
   }

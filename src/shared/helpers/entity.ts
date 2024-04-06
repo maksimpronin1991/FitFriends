@@ -1,4 +1,5 @@
-export function createEntity(entityData: string, type: string): unknown {
+
+export function createEntity(entityData: string, type: string): any{
 
   if (type === 'user') {
     return entityData

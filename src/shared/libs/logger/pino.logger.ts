@@ -1,26 +1,47 @@
-import {Logger as PinoInstance, pino} from 'pino';
+import { Logger as PinoInstance, pino, transport } from 'pino';
 import { Logger } from './logger.interface.js';
+import { getCurrentModuleDirectoryPath } from '../../helpers/file-system.js';
+import { resolve } from 'path';
 
 export class PinoLogger implements Logger {
   private readonly logger: PinoInstance;
 
-  constructor () {
-    this.logger = pino();
+  constructor() {
+    const modulePath = getCurrentModuleDirectoryPath();
+    const logFilePath = 'logs/rest.log';
+    const destination = resolve(modulePath, '../../../', logFilePath);
+
+    const multiTransport = transport({
+      targets: [
+        {
+          target: 'pino/file',
+          options: { destination },
+          level: 'debug'
+        },
+        {
+          target: 'pino/file',
+          level: 'info',
+          options: {},
+        }
+      ],
+    });
+
+    this.logger = pino({}, multiTransport);
   }
 
-  public debug (message: string, ...args: unknown[]): void {
+  public debug(message: string, ...args: unknown[]): void {
     this.logger.debug(message, ...args);
   }
 
-  public error (message: string, error: Error, ...args: unknown[]): void {
+  public error(message: string, error: Error, ...args: unknown[]): void {
     this.logger.error(message, error, ...args);
   }
 
-  public info (message: string, ...args: unknown[]): void {
+  public info(message: string, ...args: unknown[]): void {
     this.logger.info(message, ...args);
   }
 
-  public warn (message: string, ...args: unknown[]): void {
+  public warn(message: string, ...args: unknown[]): void {
     this.logger.warn(message, ...args);
   }
 

@@ -17,6 +17,8 @@
   "author": "Maksim Pronin",
   "license": "ISC",
   "devDependencies": {
+    "@types/convict": "6.1.6",
+    "@types/convict-format-with-validator": "6.0.5",
     "@types/node": "20.11.30",
     "@typescript-eslint/eslint-plugin": "7.3.1",
     "@typescript-eslint/parser": "7.3.1",
@@ -35,6 +37,9 @@
     "npm": ">=8"
   },
   "dependencies": {
+    "convict": "6.2.4",
+    "convict-format-with-validator": "6.2.0",
+    "dotenv": "16.4.5",
     "got": "14.2.1",
     "pino": "8.19.0"
   }

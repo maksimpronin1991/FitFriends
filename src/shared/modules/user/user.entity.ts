@@ -2,7 +2,6 @@ import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose
 import { TrainingType, User } from "../../types/user.type.js";
 import { createSHA256 } from "../../helpers/hash.js";
 
-const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
 export interface UserEntity extends defaultClasses.Base {}
 
@@ -13,34 +12,34 @@ export interface UserEntity extends defaultClasses.Base {}
   }
 })
 export class UserEntity extends defaultClasses.TimeStamps implements User {
-  @prop({ required: true, minlength: 1, maxlength: 15 })
+  @prop({ required: true, minlength: 1, maxlength: 15, default: '', type: () => String })
   public name: string;
 
-  @prop({ required: true, unique: true, match: [EMAIL_REGEXP, 'Email is incorrect'], })
+  @prop({ required: true, unique: true,  type: () => String })
   public email: string;
 
-  @prop({ required: true })
+  @prop({ required: true, default: '' , type: () => String })
   public avatar: string;
 
-  @prop({ required: true })
+  @prop({ required: true, type: () => String  })
   public gender: 'женский' | 'мужской' | 'неважно';
 
-  @prop({ required: false })
+  @prop({ required: false, type: () => String  })
   public birthdate: string;
 
-  @prop({ required: true })
+  @prop({ required: true , type: () => String })
   public role: 'пользователь' | 'тренер';
 
-  @prop({ required: true, minlength: 10, maxlength: 140 })
+  @prop({ required: true, minlength: 10, maxlength: 140, type: () => String  })
   public description: string;
 
-  @prop({ required: true })
+  @prop({ required: true, type: () => String  })
   public location: 'Пионерская' | 'Петроградская' | 'Удельная' | 'Звёздная' | 'Спортивная';
 
-  @prop({ required: true })
+  @prop({ required: true, type: () => String  })
   public image: string;
 
-  @prop({ required: false })
+  @prop({ required: false, type: () => String  })
   public trainingLevel: 'новичок' | 'любитель' | 'профессионал';
 
   @prop({ required: true, type: () => [String], enum: ['йога', 'бег', 'бокс', 'стрейчинг', 'кроссфит', 'аэробика', 'пилатес'], validate: {
@@ -49,28 +48,28 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   } })
   trainingTypes: TrainingType[];
 
-  @prop({ required: false })
+  @prop({ required: false, type: () => String  })
   public trainingDuration: '10-30 мин' | '30-50 мин' | '50-80 мин' | '80-100 мин';
 
-  @prop({ required: false, min: 1000, max: 5000 })
+  @prop({ required: false, min: 1000, max: 5000, type: () => Number  })
   public caloriesPerDay: number;
 
-  @prop({ required: false, min: 1000, max: 5000 })
+  @prop({ required: false, min: 1000, max: 5000, type: () => Number })
   public caloriesPerWorkout: number;
 
-  @prop({ required: false })
+  @prop({ required: false , type: () => Boolean})
   public isAvailableForTraining: boolean;
 
-  @prop({ required: false })
+  @prop({ required: false, type: () => String  })
   public certificates: string;
 
-  @prop({ required: false, minlength: 10, maxlength: 140 })
+  @prop({ required: false, minlength: 10, maxlength: 140, type: () => String  })
   public achievements: string;
 
-  @prop({ required: false })
+  @prop({ required: false, type: () => Boolean})
   public privateTraining: boolean;
 
-  @prop({ required: true, minlength: 6, maxlength: 12 })
+  @prop({ required: true, minlength: 6, maxlength: 12, default: '', type: () => String })
   private password?: string;
 
   constructor(user: User) {

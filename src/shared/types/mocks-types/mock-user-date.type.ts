@@ -19,5 +19,4 @@ export type MockUserDate = {
   certificates: string[]
   achievements: string[]
   privateTraining: string[]
-
 }

@@ -32,6 +32,8 @@ export class RestApplication {
 
     this.logger.info('init db');
     await this._initDb();
+
+
     this.logger.info('init db done');
   }
 }

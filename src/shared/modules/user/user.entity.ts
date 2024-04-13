@@ -16,7 +16,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   @prop({ required: true, minlength: 1, maxlength: 15 })
   public name: string;
 
-  @prop({ required: true, unique: true, match: [EMAIL_REGEXP, 'Email is incorrect'] })
+  @prop({ required: true, unique: true, match: [EMAIL_REGEXP, 'Email is incorrect'], })
   public email: string;
 
   @prop({ required: true })
@@ -75,7 +75,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
 
   constructor(user: User) {
     super();
-    
+
     this.name = user.name;
     this.email = user.email;
     this.avatar = user.avatar;
@@ -95,7 +95,6 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
     this.achievements = user.achievements;
     this.privateTraining = user.privateTraining;
   }
-
   public setPassword(password: string, salt: string): void {
     this.password = createSHA256(password, salt);
   }

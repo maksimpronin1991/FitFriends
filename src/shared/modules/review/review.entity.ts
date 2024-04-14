@@ -16,6 +16,15 @@ export class ReviewEntity extends defaultClasses.TimeStamps implements Review{
   rating: number; // Number between 1 and 5 (inclusive)
   @prop({required: true, min: 100, max: 1024 })
   text: string; // Min length: 100, Max length: 1024
+
+  constructor(reviewData: Review) {
+    super();
+    
+    this.author = reviewData.author;
+    this.training = reviewData.training;
+    this.rating = reviewData.rating;
+    this.text = reviewData.text;
+  }
 };
 
 export const ReviewModel = getModelForClass(ReviewEntity);

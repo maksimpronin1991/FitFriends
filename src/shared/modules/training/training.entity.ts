@@ -38,6 +38,24 @@ export class TrainingEntity extends defaultClasses.TimeStamps implements Trainin
   trainer: string;
   @prop({ required: true, default: false })
   specialOffer: boolean;
+
+  constructor(trainingData: Training) {
+    super();
+    
+    this.title = trainingData.title;
+    this.backgroundImage = trainingData.backgroundImage;
+    this.level = trainingData.level;
+    this.trainingType = trainingData.trainingType;
+    this.duration = trainingData.duration;
+    this.price = trainingData.price;
+    this.calories = trainingData.calories;
+    this.description = trainingData.description;
+    this.gender = trainingData.gender;
+    this.video = trainingData.video;
+    this.rating = trainingData.rating;
+    this.trainer = trainingData.trainer;
+    this.specialOffer = trainingData.specialOffer;
+  }
 };
 
 export const TrainingModel = getModelForClass(TrainingEntity);

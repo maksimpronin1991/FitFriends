@@ -14,6 +14,13 @@ export class NotificationEntity extends defaultClasses.TimeStamps  implements No
   user: string;
   @prop({required: true, minlength:10, maxlength: 140 })
   message: string;
+
+  constructor(notificationData: Notification) {
+    super();
+    
+    this.user = notificationData.user;
+    this.message = notificationData.message;
+  }
 }
 
 export const UserModel = getModelForClass(NotificationEntity);

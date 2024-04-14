@@ -17,6 +17,15 @@ export class PersonalTrainingEntity extends defaultClasses.TimeStamps implements
   dateStatusChanged: Date; // Date of the latest status change.
   @prop({required: true })
   requestStatus: 'under review' | 'rejected' | 'accepted'; // Current status of the request. Constraints: mandatory; one of the options: under review, rejected, accepted.
+
+  constructor(personalTrainingData: PersonalTraining) {
+    super();
+    
+    this.initiator = personalTrainingData.initiator;
+    this.user = personalTrainingData.user;
+    this.dateStatusChanged = personalTrainingData.dateStatusChanged;
+    this.requestStatus = personalTrainingData.requestStatus;
+  }
 };
 
 export const PersonalTrainingModel = getModelForClass(PersonalTrainingEntity);

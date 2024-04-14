@@ -1,4 +1,4 @@
-export class CreateUserBalanceDto {
+export class UserBalanceDto {
   public training: number;
   public quantityTraining: number;
 }

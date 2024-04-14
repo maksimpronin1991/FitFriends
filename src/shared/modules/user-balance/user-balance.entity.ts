@@ -5,7 +5,8 @@ export interface UserBalanceEntity extends defaultClasses.Base {}
 
 @modelOptions({ 
   schemaOptions: { 
-    collection: "user-balance" 
+    collection: "user-balance", 
+    timestamps: true,
   } 
 })
 export class UserBalanceEntity extends defaultClasses.TimeStamps implements UserBalance{
@@ -13,6 +14,12 @@ export class UserBalanceEntity extends defaultClasses.TimeStamps implements User
   training: number;
   @prop({ required: false , type: () => Number})
   quantityTraining: number;
+
+  constructor(UserBalance: UserBalance) {
+    super();
+    this.training = UserBalance.training;
+    this.quantityTraining = UserBalance.quantityTraining;
+  }
 }
 
 export const UserBalanceModel =getModelForClass(UserBalanceEntity);

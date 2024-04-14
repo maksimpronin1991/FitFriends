@@ -5,5 +5,4 @@ export type Order = {
   quantity: number; // Must be an integer between 1 and 50
   orderPrice: number; // Calculated as количество * ценаТренировки
   payMethod: "visa" | "mir" | "umoney";
-  createdOrderDate: Date;
 };

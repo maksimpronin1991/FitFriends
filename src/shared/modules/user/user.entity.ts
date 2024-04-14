@@ -43,8 +43,8 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   public trainingLevel: 'новичок' | 'любитель' | 'профессионал';
 
   @prop({ required: true, type: () => [String], enum: ['йога', 'бег', 'бокс', 'стрейчинг', 'кроссфит', 'аэробика', 'пилатес'], validate: {
-    validator: (value: TrainingType[]) => value.length === 3,
-    message: 'You must select exactly 3 training types',
+    validator: (value: TrainingType[]) => value.length < 3,
+    message: 'You must select less than 3 training types',
   } })
   trainingTypes: TrainingType[];
 

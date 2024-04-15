@@ -9,17 +9,17 @@ export interface OrderEntity extends defaultClasses.Base {}
   }
 })
 export class OrderEntity extends defaultClasses.TimeStamps implements Order{
-  @prop({required: true })
+  @prop({required: true, type: () => String })
   viewOrder: "abonement";
-  @prop({required: true })
+  @prop({required: true, type: () => String })
   service: string; // Specify the ID of an existing training in the system
-  @prop({required: false })
+  @prop({required: false, type: () => Number })
   price: number;
-  @prop({required: true, min: 1, max: 50})
+  @prop({required: true, min: 1, max: 50, type: () => Number})
   quantity: number; // Must be an integer between 1 and 50
-  @prop({required: false })
+  @prop({required: false , type: () => Number})
   orderPrice: number; // Calculated as количество * ценаТренировки
-  @prop({required: true })
+  @prop({required: true , type: () => String})
   payMethod: "visa" | "mir" | "umoney";
 
   constructor(orderData: Order) {

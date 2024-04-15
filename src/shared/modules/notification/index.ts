@@ -1,4 +1,5 @@
 export * from './notification.entity.js'
 export * from './dto/notification.dto.js'
 export * from './notification-service.interface.js'
-export * from './notification.service.js'
+export * from './default-notification.service.js'
+export * from './notification.container.js'

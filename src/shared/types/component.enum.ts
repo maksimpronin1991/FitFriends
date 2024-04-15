@@ -6,7 +6,7 @@ export const Component = {
   DatabaseClient: Symbol.for('DatabaseClient'),
   UserService: Symbol.for('UserService'),
   UserModel: Symbol.for('UserModel'),
-  UserBalanceService: Symbol.for('UserBalanceService'),
+  DefaultUserBalanceService: Symbol.for('DefaultUserBalanceService'),
   UserBalanceModel: Symbol.for('UserBalanceModel'),
   NotificationService: Symbol.for('NotificationService'),
   NotificationModel: Symbol.for('NotificationModel'),

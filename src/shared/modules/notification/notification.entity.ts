@@ -1,7 +1,7 @@
 import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
 import { Notification } from "../../types/notification.type.js";
 
-export interface UserEntity extends defaultClasses.Base {}
+export interface NotificationEntity extends defaultClasses.Base {}
 @modelOptions({
   schemaOptions: {
     collection: 'trainings',
@@ -11,16 +11,16 @@ export interface UserEntity extends defaultClasses.Base {}
 export class NotificationEntity extends defaultClasses.TimeStamps  implements Notification {
 
   @prop({required: false })
-  user: string;
+  userId: string;
   @prop({required: true, minlength:10, maxlength: 140 })
   message: string;
 
   constructor(notificationData: Notification) {
     super();
     
-    this.user = notificationData.user;
+    this.userId = notificationData.userId;
     this.message = notificationData.message;
   }
 }
 
-export const UserModel = getModelForClass(NotificationEntity);
+export const NotificationModel = getModelForClass(NotificationEntity);

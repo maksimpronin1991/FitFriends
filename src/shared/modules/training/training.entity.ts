@@ -1,7 +1,6 @@
-import { TrainingType } from "../../types/user.type.js";
 import { Training } from "../../types/training.type.js";
 import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
-export interface UserEntity extends defaultClasses.Base {}
+export interface TrainingEntity extends defaultClasses.Base {}
 @modelOptions({
   schemaOptions: {
     collection: 'trainings',
@@ -15,11 +14,8 @@ export class TrainingEntity extends defaultClasses.TimeStamps implements Trainin
   backgroundImage: string; // Image in jpg/png format
   @prop({required: true })
   level: 'beginner' | 'amateur' | 'professional';
-  @prop({ required: true, type: () => [String], enum: ['йога', 'бег', 'бокс', 'стрейчинг', 'кроссфит', 'аэробика', 'пилатес'], validate: {
-    validator: (value: TrainingType[]) => value.length < 1,
-    message: 'You must select just 1 training types',
-  } })
-  trainingType: TrainingType[];
+  @prop({ required: true})
+  trainingType: 'йога' | 'бег' | 'бокс' | 'стрейчинг' | 'кроссфит' | 'аэробика' | 'пилатес' ;
   @prop({required: true })
   duration: '10-30 min' | '30-50 min' | '50-80 min' | '80-100 min';
   @prop({ required: true, min: 0 })

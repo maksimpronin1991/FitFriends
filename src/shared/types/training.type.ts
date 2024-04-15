@@ -1,10 +1,10 @@
-import { TrainingType } from "./user.type.js";
+
 
 export type Training = {
   title: string; // Min length: 1, Max length: 15
   backgroundImage: string; // Image in jpg/png format
   level: 'beginner' | 'amateur' | 'professional';
-  trainingType: TrainingType[];
+  trainingType: 'йога' | 'бег' | 'бокс' | 'стрейчинг' | 'кроссфит' | 'аэробика' | 'пилатес' ;
   duration: '10-30 min' | '30-50 min' | '50-80 min' | '80-100 min';
   price: number; // >= 0
   calories: number; // Min: 1000, Max: 5000

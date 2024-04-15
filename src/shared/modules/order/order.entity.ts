@@ -1,10 +1,10 @@
 import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
 import { Order } from "../../types/order.type.js";
 
-export interface UserEntity extends defaultClasses.Base {}
+export interface OrderEntity extends defaultClasses.Base {}
 @modelOptions({
   schemaOptions: {
-    collection: 'trainings',
+    collection: 'orders',
     timestamps: true
   }
 })

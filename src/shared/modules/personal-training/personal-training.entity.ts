@@ -1,10 +1,10 @@
 import { defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
 import { PersonalTraining } from '../../types/personal-training.type.js';
 
-export interface UserEntity extends defaultClasses.Base {}
+export interface PersonalTrainingEntity extends defaultClasses.Base {}
 @modelOptions({
   schemaOptions: {
-    collection: 'trainings',
+    collection: 'personalTrainings',
     timestamps: true
   }
 })
@@ -15,7 +15,7 @@ export class PersonalTrainingEntity extends defaultClasses.TimeStamps implements
   user: string; // Trainer or another user with whom the training is conducted. Constraints: mandatory; existing user in the system with the role "User" or "Trainer"; cannot be the user who initiated the training.
   @prop({required: true })
   dateStatusChanged: Date; // Date of the latest status change.
-  @prop({required: true })
+  @prop({required: true, default: 'under review' })
   requestStatus: 'under review' | 'rejected' | 'accepted'; // Current status of the request. Constraints: mandatory; one of the options: under review, rejected, accepted.
 
   constructor(personalTrainingData: PersonalTraining) {

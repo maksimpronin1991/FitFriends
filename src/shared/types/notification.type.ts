@@ -1,4 +1,4 @@
 export type Notification = {
-  user: string;
+  userId: string;
   message: string;
 }

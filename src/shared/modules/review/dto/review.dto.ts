@@ -1,6 +1,6 @@
 export class ReviewDto {
   author: string;
-  training: string;
+  trainingId: string;
   rating: number;
   text: string;
 }

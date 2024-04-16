@@ -17,6 +17,7 @@
   "author": "Maksim Pronin",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/convict": "6.1.6",
     "@types/convict-format-with-validator": "6.0.5",
     "@types/node": "20.11.30",
@@ -39,8 +40,10 @@
   "dependencies": {
     "-": "^0.0.1",
     "@typegoose/typegoose": "11.5.0",
+    "bcrypt": "^5.1.1",
     "convict": "6.2.4",
     "convict-format-with-validator": "6.2.0",
+    "crypto": "1.0.1",
     "dotenv": "16.4.5",
     "got": "14.2.1",
     "inversify": "6.0.2",

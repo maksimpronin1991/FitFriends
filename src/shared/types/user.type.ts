@@ -5,6 +5,7 @@ export type User = {
   name: string,
   email: string,
   avatar: string,
+  password: string,
   gender: 'женский'| 'мужской'|'неважно',
   birthdate: string,
   role: 'пользователь' | 'тренер',

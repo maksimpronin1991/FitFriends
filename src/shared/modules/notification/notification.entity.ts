@@ -10,7 +10,7 @@ export interface NotificationEntity extends defaultClasses.Base {}
 })
 export class NotificationEntity extends defaultClasses.TimeStamps  implements Notification {
 
-  @prop({required: false,type: () => String})
+  @prop({required: false, type: () => String })
   userId: string;
   @prop({required: true, minlength:10, maxlength: 140,type: () => String })
   message: string;

@@ -4,8 +4,7 @@ import { TrainingService } from "./training-service.interface.js";
 import { TrainingEntity } from "./training.entity.js";
 import { inject, injectable } from "inversify";
 import { Component } from "../../types/component.enum.js";
-import { Logger } from "pino";
-
+import { Logger } from '../../libs/logger/logger.interface.js';
 @injectable()
 export class DefaultTrainingService implements TrainingService {
   constructor(

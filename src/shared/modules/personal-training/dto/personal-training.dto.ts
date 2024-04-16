@@ -1,6 +1,6 @@
 export class PersonalTrainingDto {
   initiator: string;
   user: string;
-  dateStatusChanged: Date;
+  dateStatusChanged: string;
   requestStatus: 'under review' | 'rejected' | 'accepted';
 }

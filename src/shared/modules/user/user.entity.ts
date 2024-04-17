@@ -1,5 +1,5 @@
 import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
-import { TrainingType, User } from "../../types/user.type.js";
+import {  User } from "../../types/user.type.js";
 import { createSHA256 } from "../../helpers/hash.js";
 
 
@@ -42,11 +42,8 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   @prop({ required: false, type: () => String  })
   public trainingLevel: 'новичок' | 'любитель' | 'профессионал';
 
-  @prop({ required: true, type: () => [String], enum: ['йога', 'бег', 'бокс', 'стрейчинг', 'кроссфит', 'аэробика', 'пилатес'], validate: {
-    validator: (value: TrainingType[]) => value.length < 3,
-    message: 'You must select < 3 training types',
-  } })
-  trainingTypes: TrainingType[];
+  @prop({ required: true, type: () => [String]})
+  trainingTypes: string[];
 
   @prop({ required: false, type: () => String  })
   public trainingDuration: '10-30 мин' | '30-50 мин' | '50-80 мин' | '80-100 мин';
@@ -93,6 +90,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
     this.certificates = user.certificates;
     this.achievements = user.achievements;
     this.privateTraining = user.privateTraining;
+    this.password = user.password;
   }
   public setPassword(password: string, salt: string): void {
     this.password = createSHA256(password, salt);

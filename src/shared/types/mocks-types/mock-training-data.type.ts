@@ -1,4 +1,4 @@
-export type MockTrainDate = {
+export type MockTrainingDate = {
   titles: string[]
   backgroundImages: string[]
   levels: string[]

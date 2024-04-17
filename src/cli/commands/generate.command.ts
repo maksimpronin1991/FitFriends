@@ -3,7 +3,7 @@ import { MockBalanceData, MockNotificationData, MockOrderDate, MockReviewData, M
 import { Command } from './command.interface.js';
 import { TSVUserGenerator } from '../../shared/libs/mock-generators/tsv-user-generator.js';
 import { TSVRequestGenerator } from '../../shared/libs/mock-generators/tsv-training-request-generator.js';
-import { TSVTrainGenerator } from '../../shared/libs/mock-generators/tsv-train-generator.js';
+import { TSVTrainGenerator } from '../../shared/libs/mock-generators/tsv-training-generator.js';
 import { TSVReviewGenerator } from '../../shared/libs/mock-generators/tsv-review-generator.js';
 import { TSVOrderGenerator } from '../../shared/libs/mock-generators/tsv-order-generator.js';
 import { TSVNotifyGenerator } from '../../shared/libs/mock-generators/tsv-notification-generator.js';
@@ -36,7 +36,7 @@ export class GenerateCommand implements Command {
           await tsvFileWriter.write(trainingRequestGenerator.generate());
         }
         break;
-      case 'train':
+      case 'training':
         const trainGenerator = new TSVTrainGenerator(this.initialData as MockTrainDate);
         for (let i = 0; i < count; i++) {
           await tsvFileWriter.write(trainGenerator.generate());

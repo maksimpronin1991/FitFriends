@@ -13,7 +13,7 @@ export type User = {
   location: 'Пионерская'| 'Петроградская'| 'Удельная'| 'Звёздная'| 'Спортивная',
   image: string,
   trainingLevel: 'новичок' | 'любитель' | 'профессионал',
-  trainingTypes:TrainingType[]
+  trainingTypes:string[],
   trainingDuration: '10-30 мин'| '30-50 мин'| '50-80 мин'| '80-100 мин',
   caloriesPerDay: number,
   caloriesPerWorkout: number,

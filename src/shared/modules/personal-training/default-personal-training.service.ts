@@ -14,7 +14,6 @@ export class DefaultPersonalTrainingService implements PersonalTrainingService {
   ) {}
   public async create(dto: PersonalTrainingDto): Promise<DocumentType<PersonalTrainingEntity>> {
     const personalTraining = new PersonalTrainingEntity(dto);
-
     const result = await this.PersonalTrainingModel.create(personalTraining);
     this.logger.info(`Personal training ${personalTraining.id} created!`);
     return result

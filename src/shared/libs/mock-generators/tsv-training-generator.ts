@@ -1,11 +1,11 @@
 import { Generator } from './tsv-generator.interface.js';
-import { MockTrainDate } from '../../types/mocks-types/mock-train-data.type.js';
+import { MockTrainingDate } from '../../types/mocks-types/mock-training-data.type.js';
 import {  getRandomItem } from '../../helpers/index.js';
 
 
 
 export class TSVTrainGenerator implements Generator {
-  constructor(private readonly mockData: MockTrainDate) {}
+  constructor(private readonly mockData: MockTrainingDate) {}
 
   public generate(): string {
     const title = getRandomItem<string>(this.mockData.titles);

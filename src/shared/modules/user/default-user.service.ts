@@ -12,9 +12,9 @@ export class DefaultUserService implements UserService {
     @inject(Component.Logger) private readonly logger: Logger,
     @inject(Component.UserModel) private readonly userModel: types.ModelType<UserEntity>,
   ) {}
-  public async create(dto: CreateUserDto, salt: string): Promise<DocumentType<UserEntity>> {
+  public async create(dto: CreateUserDto): Promise<DocumentType<UserEntity>> {
     const user = new UserEntity(dto);
-    user.setPassword(dto.password, salt);
+   
 
     const result = await this.userModel.create(user);
     this.logger.info(`User ${result.email} created!`);
@@ -34,7 +34,7 @@ export class DefaultUserService implements UserService {
       return existedUser;
     }
 
-    return this.create(dto, salt);
+    return this.create(dto);
   }
 
   public async findById(id: string): Promise<DocumentType<UserEntity> | null> {

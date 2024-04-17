@@ -51,11 +51,11 @@ export function createEntity(entityData: string, type: string): any{
       }));
   }
 
-  if (type === 'train') {
+  if (type === 'training') {
     return entityData
       .split('\n')
       .filter((row) => row.trim().length > 0)
-      .map((line) => line.split('\t'))
+      .map((line) => line.trimEnd().split('\t'))
       .map(([
         title,
         backgroundImage,
@@ -92,7 +92,7 @@ export function createEntity(entityData: string, type: string): any{
     return entityData
       .split('\n')
       .filter((row) => row.trim().length > 0)
-      .map((line) => line.split('\t'))
+      .map((line) => line.trimEnd().split('\t'))
       .map(([
         author,
         training,
@@ -112,7 +112,7 @@ export function createEntity(entityData: string, type: string): any{
     return entityData
       .split('\n')
       .filter((row) => row.trim().length > 0)
-      .map((line) => line.split('\t'))
+      .map((line) => line.trimEnd().split('\t'))
       .map(([
         viewOrder,
         service,
@@ -136,7 +136,7 @@ export function createEntity(entityData: string, type: string): any{
     return entityData
       .split('\n')
       .filter((row) => row.trim().length > 0)
-      .map((line) => line.split('\t'))
+      .map((line) => line.trimEnd().split('\t'))
       .map(([
         date,
         user,
@@ -148,11 +148,11 @@ export function createEntity(entityData: string, type: string): any{
       }));
   }
 
-  if (type === 'balance') {
+  if (type === 'userBalance') {
     return entityData
       .split('\n')
       .filter((row) => row.trim().length > 0)
-      .map((line) => line.split('\t'))
+      .map((line) => line.trimEnd().split('\t'))
       .map(([
         training,
         quantityTraining
@@ -163,11 +163,11 @@ export function createEntity(entityData: string, type: string): any{
 
   }
 
-  if (type === 'personal-training-request') {
+  if (type === 'personalTraining') {
     return entityData
       .split('\n')
       .filter((row) => row.trim().length > 0)
-      .map((line) => line.split('\t'))
+      .map((line) => line.trimEnd().split('\t'))
       .map(([
         Initiator,
         User,

@@ -10,7 +10,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - fit-friends_data:/data/db
+      - fit-friends:/data/db
 
   db_ui:
     image: mongo-express:latest
@@ -24,4 +24,4 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://admin:test@db:27017/
 
 volumes:
-  fit-friends_data:
+  fit-friends:

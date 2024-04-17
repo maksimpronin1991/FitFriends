@@ -1,13 +1,14 @@
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { UserBalance } from "../../types/user-balance.type.js";
-import { DefaultUserBalanceServiceInterface } from "./user-balance-service.interface.js";
+import {  UserBalanceService } from "./user-balance-service.interface.js";
 import { Logger } from "../../libs/logger/logger.interface.js";
 import { Component } from "../../types/component.enum.js";
 import { DocumentType, types } from "@typegoose/typegoose";
 import { UserBalanceEntity } from "./user-balance.entity.js";
 import { UserBalanceDto } from "./dto/user-balance.dto.js";
 
-export class DefaultUserBalanceService implements DefaultUserBalanceServiceInterface {
+@injectable()
+export class DefaultUserBalanceService implements UserBalanceService {
   constructor(
     @inject(Component.Logger) private readonly logger: Logger,
     @inject(Component.UserBalanceModel) private readonly userBalanceModel: types.ModelType<UserBalanceEntity>,

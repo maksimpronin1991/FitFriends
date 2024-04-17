@@ -14,7 +14,7 @@ export class ReviewEntity extends defaultClasses.TimeStamps implements Review{
   trainingId: string; // Existing training
   @prop({required: false, min: 1, max: 5, type: () => Number })
   rating: number; // Number between 1 and 5 (inclusive)
-  @prop({required: true, minlength: 100, maxlength: 1024, type: () => String })
+  @prop({required: true, minlength: 20, maxlength: 1024, type: () => String })
   text: string; // Min length: 100, Max length: 1024
 
   constructor(reviewData: Review) {

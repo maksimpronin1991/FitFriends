@@ -33,7 +33,7 @@ import { Command } from "./command.interface.js";
 export class ImportCommand implements Command {
   private userService: DefaultUserService;
   private userBalanceService: DefaultUserBalanceService;
-  private trainService: DefaultTrainingService;
+  private trainingService: DefaultTrainingService;
   private reviewService: DefaultReviewService;
   private personalTrainingService: DefaultPersonalTrainingService;
   private orderService: DefaultOrderService;
@@ -51,7 +51,7 @@ export class ImportCommand implements Command {
     this.databaseClient = new MongoDatabaseClient(this.logger);
     this.userService = new DefaultUserService(this.logger, UserModel);
     this.userBalanceService = new DefaultUserBalanceService(this.logger, UserBalanceModel);
-    this.trainService = new DefaultTrainingService(this.logger, TrainingModel);
+    this.trainingService = new DefaultTrainingService(this.logger, TrainingModel);
     this.reviewService = new DefaultReviewService(this.logger, ReviewModel);
     this.personalTrainingService = new DefaultPersonalTrainingService(this.logger, PersonalTrainingModel);
     this.orderService = new DefaultOrderService(this.logger, OrderModel);
@@ -67,19 +67,19 @@ export class ImportCommand implements Command {
     const entity = createEntity(line,this.actualType);
 
     switch (this.actualType) {
-      case 'user': await this.saveUser(entity);
+      case 'user': await this.saveUser(entity[0]);
         break;
-      case 'userBalance': await this.saveUserBalance(entity);
+      case 'userBalance': await this.saveUserBalance(entity[0]);
         break;
-      case 'training': await this.saveTraining(entity);
+      case 'training': await this.saveTraining(entity[0]);
         break;
-      case 'review': await this.saveReview(entity);
+      case 'review': await this.saveReview(entity[0]);
         break;
-      case 'personalTraining': await this.savePersonalTraining(entity);
+      case 'personalTraining': await this.savePersonalTraining(entity[0]);
         break;
-      case 'order': await this.saveOrder(entity);
+      case 'order': await this.saveOrder(entity[0]);
         break;
-      case 'notification': await this.saveNotification(entity);
+      case 'notification': await this.saveNotification(entity[0]);
         break;
 
       default:  throw new Error(`Unknown type: ${this.actualType}`);
@@ -94,15 +94,38 @@ export class ImportCommand implements Command {
   }
 
   private async saveUser(user: User) {
-    await this.userService.create(user,this.salt);
+    await this.userService.create({
+      name: user.name,
+      email: user.email,
+      avatar: user.avatar,
+      password: user.password,
+      gender: user.gender,
+      birthdate: user.birthdate,
+      role: user.role,
+      description: user.description,
+      location: user.location,
+      image: user.image,
+      trainingLevel: user.trainingLevel,
+      trainingTypes: user.trainingTypes,
+      trainingDuration: user.trainingDuration,
+      caloriesPerDay: user.caloriesPerDay,
+      caloriesPerWorkout: user.caloriesPerWorkout,
+      isAvailableForTraining: user.isAvailableForTraining,
+      certificates: user.certificates,
+      achievements: user.achievements,
+      privateTraining: user.privateTraining
+    });
   }
 
   private async saveUserBalance(userBalance: UserBalance) {
-    await this.userBalanceService.create(userBalance);
+    await this.userBalanceService.create({
+      training: userBalance.training,
+      quantityTraining: userBalance.quantityTraining
+    });
   }
 
   private async saveTraining(training: Training) {
-    await this.trainService.create(training);
+    await this.trainingService.create(training);
   }
 
   private async saveReview(review: Review) {
@@ -123,15 +146,17 @@ export class ImportCommand implements Command {
 
   public async execute(filename: string, login: string, password: string, host: string, dbname: string, salt: string, actualType: string): Promise<void> {
     const uri = getMongoURI(login, password, host, DEFAULT_DB_PORT, dbname);
-    console.log(uri)
+
     this.salt = salt;
     this.actualType = actualType;
+
+
+
  
 
     await this.databaseClient.connect(uri);
 
     const fileReader = new TSVFileReader(filename.trim());
-
     fileReader.on('line', this.onImportedLine);
     fileReader.on('end', this.onCompleteImport);
 

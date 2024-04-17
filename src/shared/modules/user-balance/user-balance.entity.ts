@@ -17,9 +17,10 @@ export class UserBalanceEntity extends defaultClasses.TimeStamps implements User
 
   constructor(UserBalance: UserBalance) {
     super();
+    
     this.training = UserBalance.training;
     this.quantityTraining = UserBalance.quantityTraining;
   }
 }
 
-export const UserBalanceModel =getModelForClass(UserBalanceEntity);
+export const UserBalanceModel = getModelForClass(UserBalanceEntity);

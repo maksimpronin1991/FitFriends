@@ -65,6 +65,7 @@ export class ImportCommand implements Command {
 
   private async onImportedLine(line: string, resolve: () => void) {
     const entity = createEntity(line,this.actualType);
+    console.log(entity[0])
 
     switch (this.actualType) {
       case 'user': await this.saveUser(entity[0]);
@@ -141,7 +142,10 @@ export class ImportCommand implements Command {
   }
 
   private async saveNotification(notification: Notification) {
-    await this.notificationService.create(notification);
+    await this.notificationService.create({
+      userId: notification.userId,
+      message: notification.message
+    });
   }
 
   public async execute(filename: string, login: string, password: string, host: string, dbname: string, salt: string, actualType: string): Promise<void> {

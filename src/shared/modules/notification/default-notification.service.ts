@@ -22,8 +22,8 @@ export class DefaultNotificationService implements NotificationService {
     return result
   }
 
-  public async getNotificationsById(UserId: string): Promise<DocumentType<NotificationEntity> | null> {
-    return this.NotificationModel.findOne({userId: UserId})
+  public async getNotificationsById(userId: string): Promise<DocumentType<NotificationEntity> | null> {
+    return this.NotificationModel.findOne({userId: userId})
   }
 
   public async delete(NotificationId: string): Promise<void> {

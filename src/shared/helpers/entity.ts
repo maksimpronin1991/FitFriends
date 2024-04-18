@@ -138,12 +138,10 @@ export function createEntity(entityData: string, type: string): any{
       .filter((row) => row.trim().length > 0)
       .map((line) => line.trimEnd().split('\t'))
       .map(([
-        date,
-        user,
+        userId,
         message
       ]) => ({
-        date,
-        user,
+        userId,
         message
       }));
   }
@@ -169,17 +167,13 @@ export function createEntity(entityData: string, type: string): any{
       .filter((row) => row.trim().length > 0)
       .map((line) => line.trimEnd().split('\t'))
       .map(([
-        Initiator,
-        User,
-        DateCreated,
-        DateStatusChanged,
-        RequestStatus
+        initiator,
+        user,
+        requestStatus
       ]) => ({
-        Initiator,
-        User,
-        DateCreated,
-        DateStatusChanged,
-        RequestStatus
+        initiator,
+        user,
+        requestStatus
       }));
   }
 }

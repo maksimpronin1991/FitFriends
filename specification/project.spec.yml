@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: API сервер для демо-проекта «fit-friends».
+  description: |-
+    * Список ресурсов и маршрутов сервера «fit-friends».
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 2.0.0
+tags:
+    - name: notifications
+      description: Действия с уведомлениями.
+    - name: orders
+      description: Действия с заказами.
+    - name: personal-trainings
+      description: Действия с персональными тренировками.
+    - name: reviews
+      description: Действия с отзывами.
+    - name: trainings
+      description: Действия с тренировками.
+    - name: users
+      description: Действия с пользователями.
+    - name: user-balances
+      description: Действия с балансами пользователя.
+
+paths: 
+/notifications/create:
+    post:
+      tags:
+        - notifications
+      summary: Создание уведомления.
+      description: Создание уведомления.
+      requestBody:
+        description: Данные для создания уведомления.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Notification'
+      responses:
+        '200':
+          description: Успешное создание уведомления. 
+
+
+/notifications/{userId}:
+    get:
+      tags:
+        - notifications
+      summary: Просмотр уведомления.
+      description: Просмотр уведомления по идентификатору.
+      parameters:
+        - name: notificationId
+          in: path
+          description: Идентификатор уведомления.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Успешное получение уведомления.
+  
+
+/notifications/{notificationId}:
+    delete:
+      tags:
+        - notifications
+      summary: Удаление уведомления.
+      description: Удаление уведомления по идентификатору.
+      parameters:
+        - name: notificationId
+          in: path
+          description: Идентификатор уведомления.
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Успешное удаление уведомления.
+
+
+  

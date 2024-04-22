@@ -65,7 +65,6 @@ export class ImportCommand implements Command {
 
   private async onImportedLine(line: string, resolve: () => void) {
     const entity = createEntity(line,this.actualType);
-    console.log(entity[0])
 
     switch (this.actualType) {
       case 'user': await this.saveUser(entity[0]);
@@ -160,7 +159,7 @@ export class ImportCommand implements Command {
 
     await this.databaseClient.connect(uri);
 
-    const fileReader = new TSVFileReader(filename.trim());
+    const fileReader = new TSVFileReader(filename);
     fileReader.on('line', this.onImportedLine);
     fileReader.on('end', this.onCompleteImport);
 

@@ -20,7 +20,11 @@ export class DefaultTrainingService implements TrainingService {
   public async getTrainingById(id: string): Promise<DocumentType<TrainingEntity> | null> {
     return this.TrainingModel.findById(id);
   }
-  public async getTrainings(id:string): Promise<TrainingEntity[]> {
+  public async getUserTrainings(id:string): Promise<TrainingEntity[]> {
+    return this.TrainingModel.find({user: id});
+  }
+
+  public async getTrainerTrainings(id:string): Promise<TrainingEntity[]> {
     return this.TrainingModel.find({trainer: id});
   }
   public async updateTraining(id: string, dto: TrainingDto): Promise<DocumentType<TrainingEntity> | null> {

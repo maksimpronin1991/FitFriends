@@ -17,7 +17,7 @@ export class DefaultNotificationService implements NotificationService {
     const notification = new NotificationEntity(dto)
 
     const result = await this.NotificationModel.create(notification)
-    this.logger.info(`Notification ${notification.id} created!`)
+    this.logger.info(`Notification ${notification.userId} created!`)
 
     return result
   }

@@ -19,10 +19,6 @@ export class DefaultPersonalTrainingService implements PersonalTrainingService {
     return result
   }
 
-  public async getPersonalTrainingById(id: string): Promise<DocumentType<PersonalTrainingEntity> | null> {
-    return this.PersonalTrainingModel.findById(id);
-  }
-
   public async updatePersonalTraining(id: string, dto: PersonalTrainingDto): Promise<DocumentType<PersonalTrainingEntity> | null> {
     const result = await this.PersonalTrainingModel.findByIdAndUpdate(id, dto, {new: true});
     this.logger.info(`Personal training ${id} was changed!`);

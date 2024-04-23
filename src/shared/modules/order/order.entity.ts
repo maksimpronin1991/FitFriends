@@ -12,7 +12,7 @@ export class OrderEntity extends defaultClasses.TimeStamps implements Order{
   @prop({required: true, type: () => String })
   viewOrder: "abonement";
   @prop({required: true, type: () => String })
-  service: string; // Specify the ID of an existing training in the system
+  serviceId: string; // Specify the ID of an existing training in the system
   @prop({required: false, type: () => Number })
   price: number;
   @prop({required: true, min: 1, max: 50, type: () => Number})
@@ -26,7 +26,7 @@ export class OrderEntity extends defaultClasses.TimeStamps implements Order{
     super();
     
     this.viewOrder = orderData.viewOrder;
-    this.service = orderData.service;
+    this.serviceId = orderData.serviceId;
     this.price = orderData.price;
     this.quantity = orderData.quantity;
     this.orderPrice = orderData.price * orderData.quantity;

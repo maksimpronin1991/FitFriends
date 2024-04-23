@@ -31,12 +31,44 @@ paths:
       summary: Создание уведомления.
       description: Создание уведомления.
 
+      requestBody:
+        description: Запрос на создание уведомления
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateNotificationRequest"
+      responses:
+        "201":
+          description: Успешное создание уведомления
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notifications"
+        "400":
+          description: Некорректные данные уведомления
+
   /notifications/{userId}:
     get:
       tags:
         - notifications
       summary: Просмотр уведомления.
       description: Просмотр уведомления по идентификатору.
+
+      requestBody:
+        description: Запрос на просмотр уведомления
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetUserNotifications"
+      responses:
+        "201":
+          description: Успешное создание просмотра уведомления по идентификатору
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notifications"
+        "400":
+          description: Некорректные данные уведомления
 
   /notifications/{notificationId}:
     delete:
@@ -45,19 +77,66 @@ paths:
       summary: Удаление уведомления.
       description: Удаление уведомления по идентификатору.
 
-  /orders:
-    get:
-      tags:
-        - orders
-      summary: Просмотр списка заказов.
-      description: Просмотр списка заказов.
+      requestBody:
+        description: Запрос на удаление уведомления
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NotificationDeleteRequest"
+      responses:
+        "201":
+          description: Успешное удаление уведомления по идентификатору
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notifications"
+        "400":
+          description: Некорректные данные уведомления
 
-  /orders/{orderId}:
+  /orders/{trainerId}:
     get:
       tags:
         - orders
-      summary: Просмотр заказа.
-      description: Просмотр заказа по идентификатору.
+      summary: Просмотр списка заказов тренера по идентификатору.
+      description: Просмотр списка заказов тренера по идентификатору.
+      requestBody:
+        description: Запрос на просмотр списка заказов тренера
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrainerOrders"
+      responses:
+        "201":
+          description: Успешное создание просмотра списка заказов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Orders"
+        "400":
+          description: Некорректные данные уведомления
+
+  /orders/{userId}:
+    get:
+      tags:
+        - orders
+      summary: Просмотр заказов пользователя по идентификатору.
+      description: Просмотр заказов пользователя по идентификатору.
+
+      requestBody:
+        description: Запрос на просмотр списка заказов пользователя
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserOrders"
+      responses:
+        "201":
+          description: Успешное создание просмотра списка заказов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "400":
+          description: Некорректные данные уведомления
 
   /orders/create:
     post:
@@ -66,12 +145,21 @@ paths:
       summary: Создание заказа.
       description: Создание заказа.
 
-  /personal-trainings:
-    get:
-      tags:
-        - personal-trainings
-      summary: Просмотр списка персональных тренировок.
-      description: Просмотр списка персональных тренировок.
+      requestBody:
+        description: Запрос на создание заказа
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrder"
+      responses:
+        "201":
+          description: Успешное создание заказа
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "400":
+          description: Некорректные данные уведомления
 
   /personal-trainings/create:
     post:
@@ -80,12 +168,44 @@ paths:
       summary: Создание персональной тренировки.
       description: Создание персональной тренировки.
 
+      requestBody:
+        description: Запрос на создание персональной тренировки
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePersonalTraining"
+      responses:
+        "201":
+          description: Успешное создание персональной тренировки
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonalTraining"
+        "400":
+          description: Некорректные данные уведомления
+
   /personal-trainings/{personalTrainingId}:
     get:
       tags:
         - personal-trainings
       summary: Редактирование персональной тренировки.
       description: Редактирование персональной тренировки по идентификатору.
+
+      requestBody:
+        description: Запрос на редактирование персональной тренировки
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChangePersonalTraining"
+      responses:
+        "201":
+          description: Успешное создание редактирования персональной тренировки
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonalTraining"
+        "400":
+          description: Некорректные данные уведомления
 
   /reviews:
     get:
@@ -94,12 +214,44 @@ paths:
       summary: Просмотр списка отзывов.
       description: Просмотр списка отзывов.
 
+      requestBody:
+        description: Запрос на просмотр списка отзывов
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetReviews"
+      responses:
+        "201":
+          description: Успешное создание просмотра списка отзывов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reviews"
+        "400":
+          description: Некорректные данные уведомления
+
   /reviews/create:
     post:
       tags:
         - reviews
       summary: Создание отзыва.
       description: Создание отзыва.
+
+      requestBody:
+        description: Запрос на создание отзыва
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateReview"
+      responses:
+        "201":
+          description: Успешное создание отзыва
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reviews"
+        "400":
+          description: Некорректные данные уведомления
 
   /trainings/create:
     post:
@@ -108,12 +260,42 @@ paths:
       summary: Создание тренировки.
       description: Создание тренировки.
 
+      requestBody:
+        description: Запрос на создание тренировки
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTraining"
+      responses:
+        "201":
+          description: Успешное создание тренировки
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Training"
+        "400":
+          description: Некорректные данные уведомления
+
   /trainings/{userId}:
     get:
       tags:
         - trainings
       summary: Просмотр списка тренировок пользователя .
       description: Просмотр списка тренировок пользователя по идентификатору.
+      
+      requestBody:
+        description: Запрос на просмотр списка тренировок пользователя
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserTrainings"
+      responses:
+        "201":  
+          description: Успешное создание просмотра списка тренировок пользователя
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Trainings"
 
   /trainings/{trainerId}:
     get:
@@ -122,6 +304,22 @@ paths:
       summary: Просмотр списка тренировок тренера .
       description: Просмотр списка тренировок тренера по идентификатору.
 
+      requestBody:
+        description: Запрос на просмотр списка тренировок тренера
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrainerTrainings"
+      responses:
+        "201":
+          description: Успешное создание просмотра списка тренировок тренера
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Trainings" 
+        "400":
+          description: Некорректные данные уведомления"
+
   /trainings:
     get:
       tags:
@@ -129,12 +327,44 @@ paths:
       summary: Просмотр списка тренировок.
       description: Просмотр списка тренировок.
 
+      requestBody:
+        description: Запрос на просмотр списка тренировок
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetTrainings"
+      responses:
+        "201":
+          description: Успешное создание просмотра списка тренировок
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Trainings"
+        "400":
+          description: Некорректные данные уведомления"
+
   /trainings/{trainingId}:
     put:
       tags:
         - trainings
       summary: Редактирование тренировки.
       description: Редактирование тренировки по идентификатору.
+
+      requestBody:
+        description: Запрос на редактирование тренировки
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTraining"
+      responses:
+        "201":
+          description: Успешное создание редактирования тренировки
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Training"
+        "400":
+          description: Некорректные данные уведомления
 
   /users/register:
     post:
@@ -184,8 +414,205 @@ paths:
         - user-balances
       summary: Редактирование баланса пользователя
       description: Редактирование баланса пользователя по идентификатору.
+
+components:
+  schemas:
+    CreateNotificationRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    GetUserNotifications:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    NotificationDeleteRequest:
+      type: object
+      properties:
+        notificationId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    TrainerOrders:
+      type: object
+      properties:
+        trainerId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    UserOrders:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    CreateOrder:
+      type: object
+      properties:
+        viewOrder:
+          type: string
+          example: "abonement"
+        serviceId:
+          type: string
+          example: "662696a16b25a871596a6b2f"
+        price:
+          type: number
+          example: 1000
+        quantity:
+          type: number
+          example: 1
+        payMethod:
+          type: string
+          example: "card"
+        userId:
+          type: string
+          example: 662693f8a44a5f76a2aeee40
+        trainerId:
+          type: string
+          example: 662693f8a44a5f76a2aeee40
+
+
+    CreatePersonalTraining:
+      type: object
+      properties:
+        initiator:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        user:
+          type: string
+          example: "User"
+        requestStatus:
+          type: string
+          example: "на рассмотрении"
+
+    ChangePersonalTraining:
+      type: object
+      properties:
+        personalTrainingId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        status:
+          type: string
+          example: "на рассмотрении"
+    
+    PersonalTraining:
+      type: object
+      properties:
+        initiator:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        user:
+          type: string
+          example:  "User"
+        requestStatus:
+          type: string
+          example: "на рассмотрении"
+
+    GetReviews:
+      type: object
+      properties:
+        trainingId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    CreateReview:
+      type: object
+      properties:
+        author:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        trainingId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        text:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        rating:
+          type: number
+          example: 5
+
+    CreateTraining:
+      type: object
+      properties:
+        title:
+          type: string
+          example: "Fit-boxing"
+        backgroundImage:
+          type: string
+          example: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        level:
+          type: string
+          example: "beginner"
+        trainingType:
+          type: string
+          example: "стрейчинг"
+        duration:
+          type: number
+          example: '10-30 min'
+        price:
+          type: number
+          example: 1000
+        calories:
+          type: number
+          example: 1000
+        description:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        gender:
+          type: string
+          example: "male"
+        video:
+          type: string
+          example: "https://www.youtube.com/embed/9bZkp7q19f0"
+        rating:
+          type: number
+          example: 5
+        trainer:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        specialOffer:
+          type: bolean
+          example: false
+
+
+    UserTrainings:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+       
+
+    TrainerTrainings:
+      type: object
+      properties:
+        trainerId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    GetTrainings:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    UpdateTraining:
+      type: object
+      properties:
+        trainingId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
   
-
-
-
-

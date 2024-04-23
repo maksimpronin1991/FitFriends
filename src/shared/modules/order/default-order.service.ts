@@ -21,11 +21,11 @@ export class DefaultOrderService implements OrderService {
     return result
   }
 
-  public async getOrderById(id: string): Promise<DocumentType<OrderEntity> | null> {
-    return this.OrderModel.findById(id)
+  public async getOrderByIdForTrainer(TrainerId: string): Promise<DocumentType<OrderEntity> | null> {
+    return this.OrderModel.findById({trainerId: TrainerId});
   }
 
-  public async getOrders(UserId: string): Promise<OrderEntity[]> {
+  public async getOrdersByIdForUser(UserId: string): Promise<OrderEntity[]> {
     return this.OrderModel.find({userId: UserId});
   }
 

@@ -40,10 +40,6 @@ paths:
       responses:
         "201":
           description: Успешное создание уведомления
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Notifications"
         "400":
           description: Некорректные данные уведомления
 
@@ -63,10 +59,6 @@ paths:
       responses:
         "201":
           description: Успешное создание просмотра уведомления по идентификатору
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Notifications"
         "400":
           description: Некорректные данные уведомления
 
@@ -86,10 +78,7 @@ paths:
       responses:
         "201":
           description: Успешное удаление уведомления по идентификатору
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Notifications"
+
         "400":
           description: Некорректные данные уведомления
 
@@ -108,10 +97,6 @@ paths:
       responses:
         "201":
           description: Успешное создание просмотра списка заказов
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Orders"
         "400":
           description: Некорректные данные уведомления
 
@@ -131,10 +116,6 @@ paths:
       responses:
         "201":
           description: Успешное создание просмотра списка заказов
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Order"
         "400":
           description: Некорректные данные уведомления
 
@@ -154,10 +135,6 @@ paths:
       responses:
         "201":
           description: Успешное создание заказа
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Order"
         "400":
           description: Некорректные данные уведомления
 
@@ -223,10 +200,6 @@ paths:
       responses:
         "201":
           description: Успешное создание просмотра списка отзывов
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Reviews"
         "400":
           description: Некорректные данные уведомления
 
@@ -246,10 +219,6 @@ paths:
       responses:
         "201":
           description: Успешное создание отзыва
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Reviews"
         "400":
           description: Некорректные данные уведомления
 
@@ -282,7 +251,7 @@ paths:
         - trainings
       summary: Просмотр списка тренировок пользователя .
       description: Просмотр списка тренировок пользователя по идентификатору.
-      
+
       requestBody:
         description: Запрос на просмотр списка тренировок пользователя
         content:
@@ -290,12 +259,9 @@ paths:
             schema:
               $ref: "#/components/schemas/UserTrainings"
       responses:
-        "201":  
+        "201":
           description: Успешное создание просмотра списка тренировок пользователя
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Trainings"
+
 
   /trainings/{trainerId}:
     get:
@@ -313,10 +279,6 @@ paths:
       responses:
         "201":
           description: Успешное создание просмотра списка тренировок тренера
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Trainings" 
         "400":
           description: Некорректные данные уведомления"
 
@@ -336,10 +298,6 @@ paths:
       responses:
         "201":
           description: Успешное создание просмотра списка тренировок
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Trainings"
         "400":
           description: Некорректные данные уведомления"
 
@@ -359,10 +317,6 @@ paths:
       responses:
         "201":
           description: Успешное создание редактирования тренировки
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Training"
         "400":
           description: Некорректные данные уведомления
 
@@ -373,12 +327,30 @@ paths:
       summary: Регистрация пользователя
       description: Регистрирует нового пользователя.
 
+      requestBody:
+        description: Запрос на регистрацию пользователя
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUser"
+      responses:
+        "201":
+          description: Успешная регистрация пользователя
+        "400":
+          description: Некорректные данные уведомления
+
   /users/login:
     post:
       tags:
         - users
       summary: Авторизация пользователя
       description: Авторизует пользователя на основе логина и пароля
+
+    get:
+      tags:
+        - users
+      summary: Проверка авторизации пользователя
+      description: Возвращает информацию по авторизованному пользователю
 
   /users/info/{userId}:
     get:
@@ -387,12 +359,36 @@ paths:
       summary: Просмотр пользователя
       description: Просмотр пользователя по идентификатору.
 
+      requestBody:
+        description: Запрос на просмотр пользователя
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: Успешное создание просмотра пользователя
+        "400":
+          description: Некорректные данные уведомления
+
   /users/{userId}:
     put:
       tags:
         - users
       summary: Редактирование пользователя
       description: Редактирование пользователя по идентификатору.
+
+      requestBody:
+        description: Запрос на редактирование пользователя
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUser"
+      responses:
+        "201":
+          description: Успешное создание редактирования пользователя
+        "400":
+          description: Некорректные данные уведомления
 
   /users:
     get:
@@ -401,6 +397,7 @@ paths:
       summary: Просмотр списка пользователей
       description: Просмотр списка пользователей
 
+      
   /user-balances/get/{userId}:
     get:
       tags:
@@ -408,12 +405,36 @@ paths:
       summary: Просмотр баланса пользователя
       description: Просмотр баланса пользователя по идентификатору.
 
+      requestBody:
+        description: Запрос на просмотр баланса пользователя
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetUserBalances"
+      responses:
+        "201":
+          description: Успешное создание просмотра баланса пользователя
+        "400":
+          description: Некорректные данные уведомления
+
   /user-balances/{userId}:
     put:
       tags:
         - user-balances
       summary: Редактирование баланса пользователя
       description: Редактирование баланса пользователя по идентификатору.
+
+      requestBody:
+        description: Запрос на редактирование баланса пользователя
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/UpdateUserBalances"
+      responses:
+        "201":
+          description: Успешное создание редактирования баланса пользователя
+        "400":
+          description: Некорректные данные уведомления
 
 components:
   schemas:
@@ -444,6 +465,16 @@ components:
           type: string
           example: "662693f8a44a5f76a2aeee40"
 
+    Notifications: 
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"   
+
     TrainerOrders:
       type: object
       properties:
@@ -455,6 +486,16 @@ components:
       type: object
       properties:
         userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    Orders: 
+      type: object
+      properties:
+        trainerId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        userId: 
           type: string
           example: "662693f8a44a5f76a2aeee40"
 
@@ -481,8 +522,32 @@ components:
           example: 662693f8a44a5f76a2aeee40
         trainerId:
           type: string
-          example: 662693f8a44a5f76a2aeee40
+          example: 662693f8a44a5f76a2aeee40a
 
+    Order:
+      type: object
+      properties:
+        viewOrder:
+          type: string
+          example: "abonement"
+        serviceId:
+          type: string
+          example: "662696a16b25a871596a6b2f"
+        price:
+          type: number
+          example: 1000
+        quantity:
+          type: number
+          example: 1
+        payMethod:
+          type: string
+          example: "card"
+        userId:
+          type: string
+          example: 662693f8a44a5f76a2aeee40
+        trainerId:
+          type: string
+          example: 662693f8a44a5f76a2aeee40a
 
     CreatePersonalTraining:
       type: object
@@ -506,7 +571,7 @@ components:
         status:
           type: string
           example: "на рассмотрении"
-    
+
     PersonalTraining:
       type: object
       properties:
@@ -515,7 +580,7 @@ components:
           example: "662693f8a44a5f76a2aeee40"
         user:
           type: string
-          example:  "User"
+          example: "User"
         requestStatus:
           type: string
           example: "на рассмотрении"
@@ -560,7 +625,7 @@ components:
           example: "стрейчинг"
         duration:
           type: number
-          example: '10-30 min'
+          example: "10-30 min"
         price:
           type: number
           example: 1000
@@ -586,14 +651,12 @@ components:
           type: bolean
           example: false
 
-
     UserTrainings:
       type: object
       properties:
         userId:
           type: string
           example: "662693f8a44a5f76a2aeee40"
-       
 
     TrainerTrainings:
       type: object
@@ -615,4 +678,238 @@ components:
         trainingId:
           type: string
           example: "662693f8a44a5f76a2aeee40"
-  
+        title:
+          type: string
+          example: "Fit-boxing"
+        backgroundImage:
+          type: string
+          example: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        level:
+          type: string
+          example: "beginner"
+        trainingType:
+          type: string
+          example: "стрейчинг"
+        duration:
+          type: string
+          example: "10-30 min"
+        price:
+          type: number
+          example: 1000
+        calories:
+          type: number
+          example: 1000
+        description:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        gender:
+          type: string
+          example: "male"
+        video:
+          type: string
+          example: "https://www.youtube.com/embed/9bZkp7q19f0"
+        rating:
+          type: number
+          example: 5
+        trainer:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        specialOffer:
+          type: bolean
+          example: false
+
+    Training:
+      type: object
+      properties:
+        trainingId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        title:
+          type: string
+          example: "Fit-boxing"
+        backgroundImage:
+          type: string
+          example: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        level:
+          type: string
+          example: "beginner"
+        trainingType:
+          type: string
+          example: "стрейчинг"
+        duration:
+          type: string
+          example: "10-30 min"
+        price:
+          type: number
+          example: 1000
+        calories:
+          type: number
+          example: 1000
+        description:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        gender:
+          type: string
+          example: "male"
+        video:
+          type: string
+          example: "https://www.youtube.com/embed/9bZkp7q19f0"
+        rating:
+          type: number
+          example: 5
+        trainer:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        specialOffer:
+          type: bolean
+          example: false
+
+    CreateUser:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "John"
+        email:
+          type: string
+          example: "pKfXs@example.com"
+        avatar:
+          type: string
+          example: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        gender:
+          type: string
+          example: "male"
+        birthdate:
+          type: string
+          example: "01.01.2000"
+        role:
+          type: string
+          example: "user"
+        description:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        location:
+          type: string
+          example: "USA"
+        image:
+          type: string
+          example: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        trainingLevel:
+          type: string
+          example: "beginner"
+        trainingTypes:
+          type: string
+          example: "стрейчинг"
+        trainingDuration:
+          type: string
+          example: "10-30 min"
+        caloriesPerDay:
+          type: number
+          example: 1000
+        caloriesPerWorkout:
+          type: number
+          example: 1000
+        isAvailableForTraining:
+          type: bolean
+          example: false
+        certificates:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        achievements:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        privateTraining:
+          type: bolean
+          example: false
+        password:
+          type: string
+          example: "12345678"
+
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    UpdateUser:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        name:
+          type: string
+          example: "John"
+        avatar:
+          type: string
+          example: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        gender:
+          type: string
+          example: "male"
+        birthdate:
+          type: string
+          example: "01.01.2000"
+        description:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        location:
+          type: string
+          example: "USA"
+        image:
+          type: string
+          example: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        trainingLevel:
+          type: string
+          example: "beginner"
+        trainingTypes:
+          type: string
+          example: "стрейчинг"
+        trainingDuration:
+          type: string
+          example: "10-30 min"
+        caloriesPerDay:
+          type: number
+          example: 1000
+        caloriesPerWorkout:
+          type: number
+          example: 1000
+        isAvailableForTraining:
+          type: bolean
+          example: false
+        certificates:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        achievements:
+          type: string
+          example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
+        privateTraining:
+          type: bolean
+          example: false
+
+    GetUserBalances:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+
+    UpdateUserBalances: 
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        balance:
+          type: number
+          example: 100
+
+    UserBalances:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        balance:
+          type: number
+          example: 100

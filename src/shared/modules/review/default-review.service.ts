@@ -20,6 +20,6 @@ export class DefaultReviewService implements ReviewService {
   }
 
   public async getReviews(trainingId: string): Promise<ReviewEntity[]> {
-    return this.ReviewModel.find({training: trainingId}).exec();
+    return this.ReviewModel.find({trainingId: trainingId});
   }
 }

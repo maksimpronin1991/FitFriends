@@ -22,7 +22,6 @@ export class OrderEntity extends defaultClasses.TimeStamps implements Order{
   public orderPrice: number; // Calculated as количество * ценаТренировки
   @prop({required: true , type: () => String})
   public payMethod: "visa" | "mir" | "umoney";
-
 };
 
 export const OrderModel = getModelForClass(OrderEntity)

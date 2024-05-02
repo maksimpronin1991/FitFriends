@@ -115,7 +115,7 @@ export function createEntity(entityData: string, type: string): any{
       .map((line) => line.trimEnd().split('\t'))
       .map(([
         viewOrder,
-        service,
+        serviceId,
         price,
         quantity,
         orderPrice,
@@ -123,7 +123,7 @@ export function createEntity(entityData: string, type: string): any{
         createdOrderDate
       ]) => ({
         viewOrder,
-        service,
+        serviceId,
         price,
         quantity,
         orderPrice,

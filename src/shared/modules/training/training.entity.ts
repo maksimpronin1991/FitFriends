@@ -31,7 +31,7 @@ export class TrainingEntity extends defaultClasses.TimeStamps implements Trainin
   @prop({ required: false,default: 0, type: () => Number })
   rating: number; // Default: 0
   @prop({ required: false, type: () => String })
-  trainer: string;
+  trainerId: string;
   @prop({ required: true, default: false, type: () => Boolean })
   specialOffer: boolean;
 
@@ -49,7 +49,7 @@ export class TrainingEntity extends defaultClasses.TimeStamps implements Trainin
     this.gender = trainingData.gender;
     this.video = trainingData.video;
     this.rating = trainingData.rating;
-    this.trainer = trainingData.trainer;
+    this.trainerId = trainingData.trainerId;
     this.specialOffer = trainingData.specialOffer;
   }
 };

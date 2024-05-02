@@ -6,6 +6,7 @@ import { Component } from "../../types/component.enum.js";
 import { DocumentType, types } from "@typegoose/typegoose";
 import { UserBalanceEntity } from "./user-balance.entity.js";
 import { UserBalanceDto } from "./dto/user-balance.dto.js";
+import { UpdateUserBalanceDto } from "./dto/update-user-balance.dto.js";
 
 @injectable()
 export class DefaultUserBalanceService implements UserBalanceService {
@@ -27,7 +28,7 @@ export class DefaultUserBalanceService implements UserBalanceService {
     return result
   }
 
-  public async update(userBalanceId: string, dto: UserBalanceDto): Promise<DocumentType<UserBalanceEntity> | null> {
+  public async update(userBalanceId: string, dto: UpdateUserBalanceDto): Promise<DocumentType<UserBalanceEntity> | null> {
     this.logger.info(`User balance ${userBalanceId} was changed!`);
 
     return this.userBalanceModel.findByIdAndUpdate(userBalanceId, dto, {new: true}).exec();

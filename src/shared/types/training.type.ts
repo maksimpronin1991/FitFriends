@@ -12,6 +12,6 @@ export type Training = {
   gender: 'female' | 'male' | 'all';
   video: string; // Video format: mov/avi/mp4
   rating: number; // Default: 0
-  trainer: string;
+  trainerId: string;
   specialOffer: boolean;
 };

@@ -43,7 +43,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   public trainingLevel: 'новичок' | 'любитель' | 'профессионал';
 
   @prop({ required: true, type: () => [String]})
-  trainingTypes: string[];
+  trainingTypes: 'йога' | 'бег' | 'бокс' | 'стрейчинг' | 'кроссфит' | 'аэробика' | 'пилатес';
 
   @prop({ required: false, type: () => String  })
   public trainingDuration: '10-30 мин' | '30-50 мин' | '50-80 мин' | '80-100 мин';

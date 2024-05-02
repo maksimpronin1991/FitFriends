@@ -5,6 +5,7 @@ import { TrainingEntity } from "./training.entity.js";
 import { inject, injectable } from "inversify";
 import { Component } from "../../types/component.enum.js";
 import { Logger } from '../../libs/logger/logger.interface.js';
+import { UpdateTrainingDto } from "./dto/update-training.dto.js";
 @injectable()
 export class DefaultTrainingService implements TrainingService {
   constructor(
@@ -17,19 +18,23 @@ export class DefaultTrainingService implements TrainingService {
     this.logger.info(`Training ${training.id} created!`);
     return result
   }
+
+  public async updateTraining(id: string, dto: UpdateTrainingDto): Promise<DocumentType<TrainingEntity> | null> {
+    const result = this.TrainingModel.findByIdAndUpdate(id, dto, {new: true});
+    this.logger.info(`Training ${id} was changed!`);
+    return result
+  }
+
   public async getTrainingById(id: string): Promise<DocumentType<TrainingEntity> | null> {
     return this.TrainingModel.findById(id);
-  }
-  public async getUserTrainings(id:string): Promise<TrainingEntity[]> {
-    return this.TrainingModel.find({user: id});
   }
 
   public async getTrainerTrainings(id:string): Promise<TrainingEntity[]> {
     return this.TrainingModel.find({trainer: id});
   }
-  public async updateTraining(id: string, dto: TrainingDto): Promise<DocumentType<TrainingEntity> | null> {
-    const result = this.TrainingModel.findByIdAndUpdate(id, dto, {new: true});
-    this.logger.info(`Training ${id} was changed!`);
-    return result
-  }
+
+
+
+
+
 }

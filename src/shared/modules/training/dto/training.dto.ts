@@ -10,6 +10,6 @@ export class TrainingDto {
   gender: 'female' | 'male' | 'all';
   video: string;
   rating: number;
-  trainer: string;
+  trainerId: string;
   specialOffer: boolean;
 }

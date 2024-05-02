@@ -59,6 +59,7 @@ paths:
       responses:
         "201":
           description: Успешное создание просмотра уведомления по идентификатору
+              
         "400":
           description: Некорректные данные уведомления
 
@@ -262,7 +263,6 @@ paths:
         "201":
           description: Успешное создание просмотра списка тренировок пользователя
 
-
   /trainings/{trainerId}:
     get:
       tags:
@@ -397,7 +397,6 @@ paths:
       summary: Просмотр списка пользователей
       description: Просмотр списка пользователей
 
-      
   /user-balances/get/{userId}:
     get:
       tags:
@@ -428,7 +427,7 @@ paths:
         description: Запрос на редактирование баланса пользователя
         content:
           application/json:
-            schema: 
+            schema:
               $ref: "#/components/schemas/UpdateUserBalances"
       responses:
         "201":
@@ -465,7 +464,7 @@ components:
           type: string
           example: "662693f8a44a5f76a2aeee40"
 
-    Notifications: 
+    Notifications:
       type: object
       properties:
         message:
@@ -473,7 +472,7 @@ components:
           example: "Nullam euismod nunc non metus euismod, eget fermentum velit tristiqu"
         userId:
           type: string
-          example: "662693f8a44a5f76a2aeee40"   
+          example: "662693f8a44a5f76a2aeee40"
 
     TrainerOrders:
       type: object
@@ -489,13 +488,13 @@ components:
           type: string
           example: "662693f8a44a5f76a2aeee40"
 
-    Orders: 
+    Orders:
       type: object
       properties:
         trainerId:
           type: string
           example: "662693f8a44a5f76a2aeee40"
-        userId: 
+        userId:
           type: string
           example: "662693f8a44a5f76a2aeee40"
 
@@ -894,7 +893,7 @@ components:
           type: string
           example: "662693f8a44a5f76a2aeee40"
 
-    UpdateUserBalances: 
+    UpdateUserBalances:
       type: object
       properties:
         userId:

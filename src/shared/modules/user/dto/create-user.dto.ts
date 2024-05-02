@@ -10,7 +10,7 @@ export class CreateUserDto {
   public location: 'Пионерская' | 'Петроградская' | 'Удельная' | 'Звёздная' | 'Спортивная';
   public image: string;
   public trainingLevel: 'новичок' | 'любитель' | 'профессионал';
-  public trainingTypes: string[];
+  public trainingTypes: 'йога' | 'бег' | 'бокс' | 'стрейчинг' | 'кроссфит' | 'аэробика' | 'пилатес';;
   public trainingDuration: '10-30 мин' | '30-50 мин' | '50-80 мин' | '80-100 мин';
   public caloriesPerDay: number;
   public caloriesPerWorkout: number;

@@ -14,19 +14,19 @@ export class DefaultOrderService implements OrderService {
   ) {}
 
   public async createOrder(orderData: OrderDto): Promise<DocumentType<OrderEntity>> {
-    const order = new OrderEntity(orderData);
 
-    const result = await this.OrderModel.create(order);
-    this.logger.info(`Order ${order.id} created!`);
+
+    const result = await this.OrderModel.create(orderData);
+    this.logger.info(`Order ${orderData.viewOrder} created!`);
     return result
   }
 
-  public async getOrderByIdForTrainer(TrainerId: string): Promise<DocumentType<OrderEntity> | null> {
-    return this.OrderModel.findById({trainerId: TrainerId});
-  }
 
-  public async getOrdersByIdForUser(UserId: string): Promise<OrderEntity[]> {
-    return this.OrderModel.find({userId: UserId});
+  public async getOrders(): Promise<DocumentType<OrderEntity>[]> {
+    return this.OrderModel
+      .find()
+      .populate('serviceId')
+      .exec();
   }
 
 }

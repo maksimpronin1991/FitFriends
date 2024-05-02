@@ -5,6 +5,7 @@ import { PersonalTrainingDto } from "./dto/personal-training.dto.js";
 import { inject, injectable } from "inversify";
 import { Component } from "../../types/component.enum.js";
 import { Logger } from "../../libs/logger/logger.interface.js";
+import { UpdatePersonalTrainingDto } from "./dto/update-personal-training.dto.js";
 
 @injectable()
 export class DefaultPersonalTrainingService implements PersonalTrainingService {
@@ -19,7 +20,7 @@ export class DefaultPersonalTrainingService implements PersonalTrainingService {
     return result
   }
 
-  public async updatePersonalTraining(id: string, dto: PersonalTrainingDto): Promise<DocumentType<PersonalTrainingEntity> | null> {
+  public async updatePersonalTraining(id: string, dto: UpdatePersonalTrainingDto): Promise<DocumentType<PersonalTrainingEntity> | null> {
     const result = await this.PersonalTrainingModel.findByIdAndUpdate(id, dto, {new: true});
     this.logger.info(`Personal training ${id} was changed!`);
     return result

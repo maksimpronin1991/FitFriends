@@ -1,5 +1,5 @@
-import { defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
-import { PersonalTraining } from '../../types/personal-training.type.js';
+import { Ref, defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
+import { UserEntity } from '../user/user.entity.js';
 
 export interface PersonalTrainingEntity extends defaultClasses.Base {}
 @modelOptions({
@@ -8,21 +8,14 @@ export interface PersonalTrainingEntity extends defaultClasses.Base {}
     timestamps: true
   }
 })
-export class PersonalTrainingEntity extends defaultClasses.TimeStamps implements PersonalTraining {
-  @prop({ required: true , type: () => String })
-  initiator: string; // Initiator of the training. Constraints: mandatory; existing user in the system with the role "User".
-  @prop({ required: true , type: () => String })
-  user: string; // Trainer or another user with whom the training is conducted. Constraints: mandatory; existing user in the system with the role "User" or "Trainer"; cannot be the user who initiated the training.
+export class PersonalTrainingEntity extends defaultClasses.TimeStamps{
+  @prop({ required: true , ref: UserEntity })
+  initiator: Ref<UserEntity>; // Initiator of the training. Constraints: mandatory; existing user in the system with the role "User".
+  @prop({ required: true , ref: UserEntity })
+  user: Ref<UserEntity>; // Trainer or another user with whom the training is conducted. Constraints: mandatory; existing user in the system with the role "User" or "Trainer"; cannot be the user who initiated the training.
   @prop({ required: true , type: () => String , default: 'на рассмотрении' })
   requestStatus: 'на рассмотрении' | 'отклонён' | 'принят';
 
-  constructor(personalTrainingData: PersonalTraining) {
-    super();
-    
-    this.initiator = personalTrainingData.initiator;
-    this.user = personalTrainingData.user;
-    this.requestStatus = personalTrainingData.requestStatus;
-  }
 };
 
 export const PersonalTrainingModel = getModelForClass(PersonalTrainingEntity);

@@ -5,6 +5,7 @@ import { NotificationEntity } from './notification.entity.js';
 import { inject, injectable } from 'inversify';
 import { Component } from '../../types/component.enum.js';
 import { Logger } from '../../libs/logger/logger.interface.js';
+import { DEFAULT_NOTIFICATION_COUNT } from './notification.constant.js';
 
 @injectable()
 export class DefaultNotificationService implements NotificationService {
@@ -14,21 +15,24 @@ export class DefaultNotificationService implements NotificationService {
   ) {}
 
   public async create(dto: NotificationDto): Promise<DocumentType<NotificationEntity>> {
-    const notification = new NotificationEntity(dto)
-
-    const result = await this.NotificationModel.create(notification)
-    this.logger.info(`Notification ${notification.userId} created!`)
+    const result = await this.NotificationModel.create(dto)
+    this.logger.info(`Notification for ${dto.userId} created!`)
 
     return result
   }
 
-  public async getNotificationsById(userId: string): Promise<DocumentType<NotificationEntity> | null> {
-    return this.NotificationModel.findOne({userId: userId})
+  public async getNotificationsById(userId: string,count?: number): Promise<NotificationEntity[]> {
+    const limit = count ?? DEFAULT_NOTIFICATION_COUNT
+    return this.NotificationModel
+      .find({userId: userId},{},{limit})
+      .exec();
   }
 
   public async delete(NotificationId: string): Promise<void> {
 
-    await this.NotificationModel.findByIdAndDelete(NotificationId)
+    await this.NotificationModel
+      .findByIdAndDelete(NotificationId)
+      .exec();
     this.logger.info(`Notification ${NotificationId} deleted!`)
   }
 }

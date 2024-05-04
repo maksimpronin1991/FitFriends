@@ -11,7 +11,7 @@ export interface UserEntity extends defaultClasses.Base {}
     timestamps: true,
   }
 })
-export class UserEntity extends defaultClasses.TimeStamps implements User {
+export class UserEntity extends defaultClasses.TimeStamps{
   @prop({ required: true, minlength: 1, maxlength: 15, default: '', type: () => String })
   public name: string;
 
@@ -67,7 +67,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   public privateTraining: boolean;
 
   @prop({ required: true, minlength: 6, maxlength: 12, default: '', type: () => String })
-  password: string;
+  private password?: string;
 
   constructor(user: User) {
     super();
@@ -90,7 +90,6 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
     this.certificates = user.certificates;
     this.achievements = user.achievements;
     this.privateTraining = user.privateTraining;
-    this.password = user.password;
   }
   public setPassword(password: string, salt: string): void {
     this.password = createSHA256(password, salt);

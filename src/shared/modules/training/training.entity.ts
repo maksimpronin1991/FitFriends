@@ -1,5 +1,5 @@
-import { Training } from "../../types/training.type.js";
-import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
+import { Ref, defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
+import { UserEntity } from "../user/user.entity.js";
 export interface TrainingEntity extends defaultClasses.Base {}
 @modelOptions({
   schemaOptions: {
@@ -7,7 +7,7 @@ export interface TrainingEntity extends defaultClasses.Base {}
     timestamps: true
   }
 })
-export class TrainingEntity extends defaultClasses.TimeStamps implements Training {
+export class TrainingEntity extends defaultClasses.TimeStamps{
   @prop({required: true, minLength: 1, maxLength: 15, type: () => String})
   public title: string; // Min length: 1, Max length: 15
   @prop({required: true, type: () => String })
@@ -30,28 +30,10 @@ export class TrainingEntity extends defaultClasses.TimeStamps implements Trainin
   public video: string; // Video format: mov/avi/mp4
   @prop({ required: false,default: 0, type: () => Number })
   public rating: number; // Default: 0
-  @prop({ required: false, type: () => String })
-  public trainerId: string;
+  @prop({ required: false, ref: UserEntity, type: () => String })
+  public trainerId: Ref<UserEntity>;
   @prop({ required: true, default: false, type: () => Boolean })
   public specialOffer: boolean;
-
-  constructor(trainingData: Training) {
-    super();
-    
-    this.title = trainingData.title;
-    this.backgroundImage = trainingData.backgroundImage;
-    this.level = trainingData.level;
-    this.trainingType = trainingData.trainingType;
-    this.duration = trainingData.duration;
-    this.price = trainingData.price;
-    this.calories = trainingData.calories;
-    this.description = trainingData.description;
-    this.gender = trainingData.gender;
-    this.video = trainingData.video;
-    this.rating = trainingData.rating;
-    this.trainerId = trainingData.trainerId;
-    this.specialOffer = trainingData.specialOffer;
-  }
 };
 
 export const TrainingModel = getModelForClass(TrainingEntity);

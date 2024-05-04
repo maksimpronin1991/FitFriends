@@ -5,7 +5,7 @@ import { UpdateTrainingDto } from "./dto/update-training.dto.js";
 
 export interface TrainingService{
   create(dto: TrainingDto): Promise<DocumentType<TrainingEntity>>;
-  updateTraining(id: string, dto: UpdateTrainingDto): Promise<DocumentType<TrainingEntity> | null>;
   getTrainingById(id: string): Promise<DocumentType<TrainingEntity> | null>;
   getTrainerTrainings(trainerId:string): Promise<TrainingEntity[]>
+  updateTraining(id: string, dto: UpdateTrainingDto): Promise<DocumentType<TrainingEntity> | null>;
 }

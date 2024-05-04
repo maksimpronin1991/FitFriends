@@ -5,6 +5,8 @@ import { CreateUserDto } from './dto/create-user.dto.js';
 import { inject, injectable } from 'inversify';
 import { Component } from '../../types/component.enum.js';
 import { Logger } from '../../libs/logger/logger.interface.js';
+import { UpdateUserDto } from './dto/update-user.dto.js';
+import { DEFAULT_USER_COUNT } from './user.constant.js';
 
 @injectable()
 export class DefaultUserService implements UserService {
@@ -12,9 +14,9 @@ export class DefaultUserService implements UserService {
     @inject(Component.Logger) private readonly logger: Logger,
     @inject(Component.UserModel) private readonly userModel: types.ModelType<UserEntity>,
   ) {}
-  public async create(dto: CreateUserDto): Promise<DocumentType<UserEntity>> {
+  public async create(dto: CreateUserDto, salt: string): Promise<DocumentType<UserEntity>> {
     const user = new UserEntity(dto);
-   
+    user.setPassword(dto.password, salt);
 
     const result = await this.userModel.create(user);
     this.logger.info(`User ${result.email} created!`);
@@ -34,14 +36,26 @@ export class DefaultUserService implements UserService {
       return existedUser;
     }
 
-    return this.create(dto);
+    return this.create(dto, salt);
   }
 
   public async findById(id: string): Promise<DocumentType<UserEntity> | null> {
-    return this.userModel.findById({id});
+    return this.userModel
+      .findById({id})
+      .exec();
   }
 
-  public async find(): Promise<DocumentType<UserEntity>[]> {
-    return this.userModel.find();
+  public async update(id: string, dto: UpdateUserDto): Promise<DocumentType<UserEntity> | null> {
+    const result = await this.userModel
+      .findByIdAndUpdate(id, dto, {new: true})
+      .exec();
+    return result
+  }
+
+  public async find(count?: number): Promise<DocumentType<UserEntity>[]> {
+    const limit = count ?? DEFAULT_USER_COUNT
+    return this.userModel
+      .find({},{},{limit})
+      .exec();
   }
 }

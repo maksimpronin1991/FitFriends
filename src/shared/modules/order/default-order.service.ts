@@ -5,6 +5,7 @@ import { OrderEntity } from "./order.entity.js";
 import { inject, injectable } from "inversify";
 import { Component } from "../../types/component.enum.js";
 import { Logger } from "../../libs/logger/logger.interface.js";
+import { DEFAULT_ORDER_COUNT } from "./order.constant.js";
 
 @injectable()
 export class DefaultOrderService implements OrderService {
@@ -14,17 +15,16 @@ export class DefaultOrderService implements OrderService {
   ) {}
 
   public async createOrder(orderData: OrderDto): Promise<DocumentType<OrderEntity>> {
-
-
     const result = await this.OrderModel.create(orderData);
     this.logger.info(`Order ${orderData.viewOrder} created!`);
     return result
   }
 
 
-  public async getOrders(): Promise<DocumentType<OrderEntity>[]> {
+  public async getOrders(count?: number): Promise<DocumentType<OrderEntity>[]> {
+    const limit = count ?? DEFAULT_ORDER_COUNT
     return this.OrderModel
-      .find()
+      .find({},{},{limit})
       .populate('serviceId')
       .exec();
   }

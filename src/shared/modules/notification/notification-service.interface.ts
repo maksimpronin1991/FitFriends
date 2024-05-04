@@ -4,6 +4,6 @@ import { NotificationEntity } from "./notification.entity.js";
 
 export interface NotificationService {
   create(dto: NotificationDto): Promise<DocumentType<NotificationEntity>>;
-  getNotificationsById(userId: string): Promise<DocumentType<NotificationEntity> | null>;
+  getNotificationsById(userId: string): Promise<NotificationEntity[]>
   delete(NotificationId: string): Promise<void>;
 }

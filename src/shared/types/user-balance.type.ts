@@ -1,4 +1,4 @@
 export type UserBalance = {
-  training: number;
+  training: string;
   quantityTraining: number;
 }

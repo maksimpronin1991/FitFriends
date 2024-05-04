@@ -6,6 +6,7 @@ import { inject, injectable } from "inversify";
 import { Component } from "../../types/component.enum.js";
 import { Logger } from '../../libs/logger/logger.interface.js';
 import { UpdateTrainingDto } from "./dto/update-training.dto.js";
+import { DEFAULT_TRAINING_COUNT } from "./training.constant.js";
 @injectable()
 export class DefaultTrainingService implements TrainingService {
   constructor(
@@ -13,9 +14,8 @@ export class DefaultTrainingService implements TrainingService {
     @inject(Component.TrainingModel) private readonly TrainingModel: types.ModelType<TrainingEntity>,
   ) {}
   public async create(dto: TrainingDto): Promise<DocumentType<TrainingEntity>> {
-    const training = new TrainingEntity(dto);
-    const result = this.TrainingModel.create(training);
-    this.logger.info(`Training ${training.id} created!`);
+    const result = this.TrainingModel.create(dto);
+    this.logger.info(`Training ${dto.title} created!`);
     return result
   }
 
@@ -26,11 +26,16 @@ export class DefaultTrainingService implements TrainingService {
   }
 
   public async getTrainingById(id: string): Promise<DocumentType<TrainingEntity> | null> {
-    return this.TrainingModel.findById(id);
+    return this.TrainingModel
+      .findById(id)
+      .exec();
   }
 
-  public async getTrainerTrainings(id:string): Promise<TrainingEntity[]> {
-    return this.TrainingModel.find({trainer: id});
+  public async getTrainerTrainings(id:string, count?: number): Promise<TrainingEntity[]> {
+    const limit = count ?? DEFAULT_TRAINING_COUNT;
+    return this.TrainingModel
+      .find({trainer: id},{},{limit})
+      .exec();
   }
 
 

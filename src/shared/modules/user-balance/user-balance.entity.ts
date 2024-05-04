@@ -1,5 +1,5 @@
-import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
-import { UserBalance } from "../../types/user-balance.type.js";
+import { Ref, defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
+import { TrainingEntity } from "../training/training.entity.js";
 
 export interface UserBalanceEntity extends defaultClasses.Base {}
 
@@ -9,18 +9,15 @@ export interface UserBalanceEntity extends defaultClasses.Base {}
     timestamps: true,
   } 
 })
-export class UserBalanceEntity extends defaultClasses.TimeStamps implements UserBalance{
-  @prop({ required: false , type: () => Number})
-  training: number;
-  @prop({ required: false , type: () => Number})
-  quantityTraining: number;
+export class UserBalanceEntity extends defaultClasses.TimeStamps{
+  @prop({ required: false , type: () => String})
+  public userId: string
 
-  constructor(UserBalance: UserBalance) {
-    super();
-    
-    this.training = UserBalance.training;
-    this.quantityTraining = UserBalance.quantityTraining;
-  }
+  @prop({ required: false , ref: TrainingEntity})
+  public training: Ref<TrainingEntity>;
+
+  @prop({ required: false , type: () => Number})
+  public quantityTraining: number;
 }
 
 export const UserBalanceModel = getModelForClass(UserBalanceEntity);

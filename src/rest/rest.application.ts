@@ -5,7 +5,6 @@ import { Logger } from "../shared/libs/logger/index.js";
 import { Component } from "../shared/types/component.enum.js";
 import { DatabaseClient } from "../shared/libs/database-client/database-client.interface.js";
 import { getMongoURI } from "../shared/helpers/database.js";
-import { OrderService } from "../shared/modules/order/order-service.interface.js";
 
 @injectable()
 export class RestApplication {

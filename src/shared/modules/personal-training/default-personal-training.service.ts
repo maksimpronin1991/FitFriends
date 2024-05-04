@@ -14,9 +14,8 @@ export class DefaultPersonalTrainingService implements PersonalTrainingService {
     @inject(Component.PersonalTrainingModel) private readonly PersonalTrainingModel: types.ModelType<PersonalTrainingEntity>,
   ) {}
   public async create(dto: PersonalTrainingDto): Promise<DocumentType<PersonalTrainingEntity>> {
-    const personalTraining = new PersonalTrainingEntity(dto);
-    const result = await this.PersonalTrainingModel.create(personalTraining);
-    this.logger.info(`Personal training ${personalTraining.id} created!`);
+    const result = await this.PersonalTrainingModel.create(dto);
+    this.logger.info(`Personal training for ${dto.user} created!`);
     return result
   }
 

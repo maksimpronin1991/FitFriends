@@ -1,5 +1,5 @@
-import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
-import { Notification } from "../../types/notification.type.js";
+import { Ref, defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
+import { UserEntity } from "../user/user.entity.js";
 
 export interface NotificationEntity extends defaultClasses.Base {}
 @modelOptions({
@@ -8,19 +8,13 @@ export interface NotificationEntity extends defaultClasses.Base {}
     timestamps: true
   }
 })
-export class NotificationEntity extends defaultClasses.TimeStamps  implements Notification {
+export class NotificationEntity extends defaultClasses.TimeStamps{
 
-  @prop({required: false, type: () => String })
-  userId: string;
+  @prop({required: false, ref: UserEntity })
+  userId: Ref<UserEntity>;
   @prop({required: true, minlength:10, maxlength: 140,type: () => String })
   message: string;
 
-  constructor(notificationData: Notification) {
-    super();
-    
-    this.userId = notificationData.userId;
-    this.message = notificationData.message;
-  }
 }
 
 export const NotificationModel = getModelForClass(NotificationEntity);

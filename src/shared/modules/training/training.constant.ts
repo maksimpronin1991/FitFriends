@@ -1,0 +1,1 @@
+export const DEFAULT_TRAINING_COUNT = 50;

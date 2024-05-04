@@ -1,5 +1,4 @@
 import { inject, injectable } from "inversify";
-import { UserBalance } from "../../types/user-balance.type.js";
 import {  UserBalanceService } from "./user-balance-service.interface.js";
 import { Logger } from "../../libs/logger/logger.interface.js";
 import { Component } from "../../types/component.enum.js";
@@ -15,18 +14,21 @@ export class DefaultUserBalanceService implements UserBalanceService {
     @inject(Component.UserBalanceModel) private readonly userBalanceModel: types.ModelType<UserBalanceEntity>,
   ) { }
 
-  public async getBalance(categoryId: string): Promise<DocumentType<UserBalance> | null> {
-    return this.userBalanceModel.findById(categoryId).exec();
-  }
-
   public async create(dto: UserBalanceDto): Promise<DocumentType<UserBalanceEntity>> {
-    const user = new UserBalanceEntity(dto);
+    const userBalance = await this.userBalanceModel.create(dto);
 
-    const result = await this.userBalanceModel.create(user);
-    this.logger.info(`User balance ${result} created!`);
+    this.logger.info(`User balance ${userBalance} created!`);
 
-    return result
+    return userBalance
   }
+
+
+  public async getBalance(userId: string): Promise<DocumentType<UserBalanceEntity>[]> {
+    return this.userBalanceModel
+      .find({userId})
+      .exec();
+  }
+
 
   public async update(userBalanceId: string, dto: UpdateUserBalanceDto): Promise<DocumentType<UserBalanceEntity> | null> {
     this.logger.info(`User balance ${userBalanceId} was changed!`);

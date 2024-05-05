@@ -22,6 +22,12 @@ export class DefaultUserBalanceService implements UserBalanceService {
     return userBalance
   }
 
+  public async findAll(): Promise<DocumentType<UserBalanceEntity>[]> {
+    return this.userBalanceModel
+      .find()
+      .exec();
+  }
+
 
   public async getBalance(userId: string): Promise<DocumentType<UserBalanceEntity>[]> {
     return this.userBalanceModel

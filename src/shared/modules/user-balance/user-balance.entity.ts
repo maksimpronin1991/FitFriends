@@ -1,5 +1,4 @@
-import { Ref, defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
-import { TrainingEntity } from "../training/training.entity.js";
+import { defaultClasses, getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
 
 export interface UserBalanceEntity extends defaultClasses.Base {}
 
@@ -13,8 +12,8 @@ export class UserBalanceEntity extends defaultClasses.TimeStamps{
   @prop({ required: false , type: () => String})
   public userId: string
 
-  @prop({ required: false , ref: TrainingEntity})
-  public training: Ref<TrainingEntity>;
+  @prop({ required: false , type: ()=> String})
+  public training: string;
 
   @prop({ required: false , type: () => Number})
   public quantityTraining: number;

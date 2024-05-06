@@ -1,4 +1,5 @@
 export class UserBalanceDto {
-  public training: number;
+  public userId: string;
+  public training: string;
   public quantityTraining: number;
 }

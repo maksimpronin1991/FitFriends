@@ -4,8 +4,7 @@ import { UserBalanceEntity } from "./user-balance.entity.js";
 import { UpdateUserBalanceDto } from "./dto/update-user-balance.dto.js";
 
 export interface UserBalanceService {
-  findAll(): Promise<DocumentType<UserBalanceEntity>[]>;
-  getBalance(userId: string): Promise<DocumentType<UserBalanceEntity>[]>;
   create(dto: UserBalanceDto): Promise<DocumentType<UserBalanceEntity>>;
+  getUserBalance(userId: string): Promise<DocumentType<UserBalanceEntity>[]>;
   update(userBalanceId: string, dto: UpdateUserBalanceDto): Promise<DocumentType<UserBalanceEntity> | null>
 }

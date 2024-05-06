@@ -31,6 +31,7 @@ export class DefaultUserBalanceService implements UserBalanceService {
 
 
   public async update(userBalanceId: string, dto: UpdateUserBalanceDto): Promise<DocumentType<UserBalanceEntity> | null> {
+    
     this.logger.info(`User balance ${userBalanceId} was changed!`);
 
     return this.userBalanceModel.findByIdAndUpdate(userBalanceId, dto, {new: true}).exec();

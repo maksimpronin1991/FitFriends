@@ -397,10 +397,10 @@ paths:
       summary: Просмотр списка пользователей
       description: Просмотр списка пользователей
 
-  /user-balances/get/{userId}:
+  /user-balance/{userId}:
     get:
       tags:
-        - user-balances
+        - user-balance
       summary: Просмотр баланса пользователя
       description: Просмотр баланса пользователя по идентификатору.
 
@@ -416,10 +416,10 @@ paths:
         "400":
           description: Некорректные данные уведомления
 
-  /user-balances/{userId}:
+  /user-balance/{userBalanceId}:
     put:
       tags:
-        - user-balances
+        - user-balance
       summary: Редактирование баланса пользователя
       description: Редактирование баланса пользователя по идентификатору.
 
@@ -435,6 +435,24 @@ paths:
         "400":
           description: Некорректные данные уведомления
 
+  /user-balance:
+    post:
+      tags:
+        - user-balance
+      summary: Cоздание баланса пользователя
+      description: Cоздание баланса пользователя.
+
+      requestBody:
+        description: Запрос на Cоздание баланса пользователя
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserBalances"
+      responses:
+        "201":
+          description: Успешное создание баланса пользователя
+        "400":
+          description: Некорректные данные уведомления
 components:
   schemas:
     CreateNotificationRequest:
@@ -889,9 +907,9 @@ components:
     GetUserBalances:
       type: object
       properties:
-        userId:
-          type: string
-          example: "662693f8a44a5f76a2aeee40"
+        quantityTraining:
+          type: number
+          example: 100
 
     UpdateUserBalances:
       type: object
@@ -899,16 +917,22 @@ components:
         userId:
           type: string
           example: "662693f8a44a5f76a2aeee40"
-        balance:
+        training:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        quantityTraining:
           type: number
           example: 100
 
-    UserBalances:
+    CreateUserBalances:
       type: object
       properties:
         userId:
           type: string
           example: "662693f8a44a5f76a2aeee40"
-        balance:
+        training:
+          type: string
+          example: "662693f8a44a5f76a2aeee40"
+        quantityTraining:
           type: number
           example: 100

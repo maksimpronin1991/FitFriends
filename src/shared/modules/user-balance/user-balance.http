@@ -1,4 +1,4 @@
-GET http://localhost:5000/user-balance HTTP/1.1
+GET http://localhost:5000/user-balance/aas123415asxd HTTP/1.1
 Content-Type: application/json
 
 ###
@@ -10,4 +10,13 @@ Content-Type: application/json
   "userId": "aas123415asxd",
   "training": "6620100b5fdea4a2c5fbaf98",
   "quantityTraining": 10
+}
+
+###
+
+PUT http://localhost:5000/user-balance/66200cac04dee381d9d01b2a HTTP/1.1
+Content-Type: application/json
+
+{
+  "quantityTraining": 50
 }

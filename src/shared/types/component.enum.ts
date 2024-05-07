@@ -18,4 +18,5 @@ export const Component = {
   TrainingService: Symbol.for('TrainingService'),
   TrainingModel: Symbol.for('TrainingModel'),
   UserBalanceController: Symbol.for('UserBalanceController'),
+  ExceptionFilter: Symbol.for('ExceptionFilter'),
 } as const;     

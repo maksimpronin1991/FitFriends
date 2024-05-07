@@ -397,10 +397,10 @@ paths:
       summary: Просмотр списка пользователей
       description: Просмотр списка пользователей
 
-  /user-balance/{userId}:
+  /user-balances/{userId}:
     get:
       tags:
-        - user-balance
+        - user-balances
       summary: Просмотр баланса пользователя
       description: Просмотр баланса пользователя по идентификатору.
 
@@ -416,10 +416,10 @@ paths:
         "400":
           description: Некорректные данные уведомления
 
-  /user-balance/{userBalanceId}:
+  /user-balances/{userBalanceId}:
     put:
       tags:
-        - user-balance
+        - user-balances
       summary: Редактирование баланса пользователя
       description: Редактирование баланса пользователя по идентификатору.
 
@@ -435,10 +435,10 @@ paths:
         "400":
           description: Некорректные данные уведомления
 
-  /user-balance:
+  /user-balances:
     post:
       tags:
-        - user-balance
+        - user-balances
       summary: Cоздание баланса пользователя
       description: Cоздание баланса пользователя.
 

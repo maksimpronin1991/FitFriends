@@ -1,0 +1,62 @@
+# Пользователи
+## Создать нового пользователя
+POST http://localhost:5000/users/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Natalia",
+  "email": "sadaa@max.com",
+  "avatar": "asjjdsjad",
+  "gender": "женский",
+  "birthdate": "1990-01-01",
+  "role": "пользователь",
+  "description": "asdssssssssssssssssssssssasdaa",
+  "location": "Пионерская",
+  "image": "sdasdasdasd",
+  "trainingLevel": "новичок",
+  "trainingTypes": "йога",
+  "trainingDuration": "10-30 мин",
+  "caloriesPerDay": "1000",
+  "caloriesPerWorkout": "1200",
+  "isAvailableForTraining": true,
+  "certificates": "Sdsadasdas",
+  "achievements": "sassssssssdas",
+  "privateTraining": false,
+  "password": "123123"
+}
+
+
+
+###
+
+## Авторизовать пользователя
+
+POST http://localhost:5000/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "sadaa@max.com",
+  "password": "123123"
+}
+
+###
+
+GET http://localhost:5000/users HTTP/1.1
+Content-Type: application/json
+
+###
+
+
+GET http://localhost:5000/users/info/661ffa52db68976f5f55c689 HTTP/1.1
+Content-Type: application/json
+
+###
+
+PUT http://localhost:5000/users/661ffa52db68976f5f55c689 HTTP/1.1
+Content-Type: application/json
+
+{
+  "avatar": "avsdasdasdatar.jpg"
+}
+
+###

@@ -3,7 +3,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5000/user-balance HTTP/1.1
+POST http://localhost:5000/user-balances HTTP/1.1
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/user-balance/66200cac04dee381d9d01b2a HTTP/1.1
+PUT http://localhost:5000/user-balances/66200cac04dee381d9d01b2a HTTP/1.1
 Content-Type: application/json
 
 {

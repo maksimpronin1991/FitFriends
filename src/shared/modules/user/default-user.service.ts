@@ -41,13 +41,13 @@ export class DefaultUserService implements UserService {
 
   public async findById(id: string): Promise<DocumentType<UserEntity> | null> {
     return this.userModel
-      .findById({id})
+      .findById({_id: id})
       .exec();
   }
 
   public async update(id: string, dto: UpdateUserDto): Promise<DocumentType<UserEntity> | null> {
     const result = await this.userModel
-      .findByIdAndUpdate(id, dto, {new: true})
+      .findByIdAndUpdate({_id: id}, dto, {new: true})
       .exec();
     return result
   }

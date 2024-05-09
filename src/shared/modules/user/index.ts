@@ -5,3 +5,4 @@ export * from './user.container.js';
 export * from './user-service.interface.js'
 export * from './dto/update-user.dto.js'
 export * from './user.constant.js'
+export * from './user.controller.js';

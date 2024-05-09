@@ -66,7 +66,7 @@ export class UserEntity extends defaultClasses.TimeStamps{
   @prop({ required: false, type: () => Boolean})
   public privateTraining: boolean;
 
-  @prop({ required: true, minlength: 6, maxlength: 12, default: '', type: () => String })
+  @prop({ required: true, default: '', type: () => String })
   private password?: string;
 
   constructor(user: User) {

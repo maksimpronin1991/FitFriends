@@ -15,9 +15,10 @@ export class RestApplication {
     @inject(Component.Logger) private readonly logger: Logger,
     @inject(Component.Config) private readonly config: Config<RestSchema>,
     @inject(Component.DatabaseClient) private readonly databaseClient: DatabaseClient,
-    @inject(Component.UserBalanceController) private readonly userBalanceController: Controller,
     @inject(Component.ExceptionFilter) private readonly appExceptionFilter: ExceptionFilter,
-  ) {
+    @inject(Component.UserBalanceController) private readonly userBalanceController: Controller,
+    @inject(Component.UserController) private readonly userController: Controller,
+    ) {
     this.server = express();
   }
 
@@ -39,17 +40,19 @@ export class RestApplication {
   }
 
   public async _initControllers() {
+    this.server.use('/user-balances', this.userBalanceController.router);
+    this.server.use('/users', this.userController.router);
+  }
 
-    this.server.use('/user-balance', this.userBalanceController.router);
+  private async _initExceptionFilters() {
+    this.server.use(this.appExceptionFilter.catch.bind(this.appExceptionFilter));
   }
 
   private async _initMiddleware() {
     this.server.use(express.json());
   }
-  
-  private async _initExceptionFilters() {
-    this.server.use(this.appExceptionFilter.catch.bind(this.appExceptionFilter));
-  }
+
+
 
   public async init() {
     this.logger.info("RestApplication init");

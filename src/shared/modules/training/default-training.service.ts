@@ -1,5 +1,5 @@
 import { DocumentType, types } from "@typegoose/typegoose";
-import { TrainingDto } from "./dto/create-training.dto.js";
+import { CreateTrainingDto } from "./dto/create-training.dto.js";
 import { TrainingService } from "./training-service.interface.js";
 import { TrainingEntity } from "./training.entity.js";
 import { inject, injectable } from "inversify";
@@ -13,7 +13,7 @@ export class DefaultTrainingService implements TrainingService {
     @inject(Component.Logger) private readonly logger: Logger,
     @inject(Component.TrainingModel) private readonly TrainingModel: types.ModelType<TrainingEntity>,
   ) {}
-  public async create(dto: TrainingDto): Promise<DocumentType<TrainingEntity>> {
+  public async create(dto: CreateTrainingDto): Promise<DocumentType<TrainingEntity>> {
     const result = this.TrainingModel.create(dto);
     this.logger.info(`Training ${dto.title} created!`);
     return result
@@ -34,7 +34,7 @@ export class DefaultTrainingService implements TrainingService {
   public async getTrainerTrainings(id:string, count?: number): Promise<TrainingEntity[]> {
     const limit = count ?? DEFAULT_TRAINING_COUNT;
     return this.TrainingModel
-      .find({trainer: id},{},{limit})
+      .find({trainerId: id},{},{limit})
       .exec();
   }
 

@@ -263,7 +263,7 @@ paths:
         "201":
           description: Успешное создание просмотра списка тренировок пользователя
 
-  /trainings/{trainerId}:
+  /trainings/by-trainer/{trainerId}:
     get:
       tags:
         - trainings

@@ -1,5 +1,5 @@
 import { DocumentType, types } from "@typegoose/typegoose";
-import { TrainingDto } from "./dto/training.dto.js";
+import { TrainingDto } from "./dto/create-training.dto.js";
 import { TrainingService } from "./training-service.interface.js";
 import { TrainingEntity } from "./training.entity.js";
 import { inject, injectable } from "inversify";

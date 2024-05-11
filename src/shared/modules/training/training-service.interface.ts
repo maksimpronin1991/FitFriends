@@ -1,5 +1,5 @@
 import { DocumentType } from "@typegoose/typegoose";
-import { TrainingDto } from "./dto/training.dto.js";
+import { TrainingDto } from "./dto/create-training.dto.js";
 import { TrainingEntity } from "./training.entity.js";
 import { UpdateTrainingDto } from "./dto/update-training.dto.js";
 

@@ -1,7 +1,7 @@
 import { DocumentType, types } from "@typegoose/typegoose";
 import { ReviewService } from "./review-service.interface.js";
 import { ReviewEntity } from "./review.entity.js";
-import { ReviewDto } from "./dto/review.dto.js";
+import { ReviewDto } from "./dto/create-review.dto.js";
 import { inject, injectable } from "inversify";
 import { Component } from "../../types/component.enum.js";
 import { Logger } from "../../libs/logger/logger.interface.js";

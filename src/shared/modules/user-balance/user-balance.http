@@ -1,8 +1,9 @@
-GET http://localhost:5000/user-balance/aas123415asxd HTTP/1.1
+## Получения количества тренировок пользователя
+GET http://localhost:5000/user-balances/661ffa52db68976f5f55c689 HTTP/1.1
 Content-Type: application/json
 
 ###
-
+## Создание баланаса пользователя
 POST http://localhost:5000/user-balances HTTP/1.1
 Content-Type: application/json
 
@@ -14,9 +15,10 @@ Content-Type: application/json
 
 ###
 
+## Обновления баланса пользователя
 PUT http://localhost:5000/user-balances/66200cac04dee381d9d01b2a HTTP/1.1
 Content-Type: application/json
 
 {
-  "quantityTraining": 50
+  "quantityTraining": 20
 }

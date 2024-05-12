@@ -246,23 +246,6 @@ paths:
         "400":
           description: Некорректные данные уведомления
 
-  /trainings/{userId}:
-    get:
-      tags:
-        - trainings
-      summary: Просмотр списка тренировок пользователя .
-      description: Просмотр списка тренировок пользователя по идентификатору.
-
-      requestBody:
-        description: Запрос на просмотр списка тренировок пользователя
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UserTrainings"
-      responses:
-        "201":
-          description: Успешное создание просмотра списка тренировок пользователя
-
   /trainings/by-trainer/{trainerId}:
     get:
       tags:
@@ -668,24 +651,10 @@ components:
           type: bolean
           example: false
 
-    UserTrainings:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: "662693f8a44a5f76a2aeee40"
-
     TrainerTrainings:
       type: object
       properties:
         trainerId:
-          type: string
-          example: "662693f8a44a5f76a2aeee40"
-
-    GetTrainings:
-      type: object
-      properties:
-        userId:
           type: string
           example: "662693f8a44a5f76a2aeee40"
 

@@ -38,8 +38,4 @@ export class DefaultTrainingService implements TrainingService {
       .exec();
   }
 
-
-
-
-
 }

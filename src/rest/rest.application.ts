@@ -18,7 +18,9 @@ export class RestApplication {
     @inject(Component.ExceptionFilter) private readonly appExceptionFilter: ExceptionFilter,
     @inject(Component.UserBalanceController) private readonly userBalanceController: Controller,
     @inject(Component.UserController) private readonly userController: Controller,
-    @inject(Component.TrainingController) private readonly trainingController: Controller
+    @inject(Component.TrainingController) private readonly trainingController: Controller,
+    @inject(Component.ReviewController) private readonly reviewController: Controller,
+    
     ) {
     this.server = express();
   }
@@ -44,6 +46,7 @@ export class RestApplication {
     this.server.use('/user-balances', this.userBalanceController.router);
     this.server.use('/users', this.userController.router);
     this.server.use('/trainings', this.trainingController.router);
+    this.server.use('/reviews', this.reviewController.router);
   }
 
   private async _initExceptionFilters() {

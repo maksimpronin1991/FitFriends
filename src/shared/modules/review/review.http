@@ -1,0 +1,21 @@
+# Отзывы
+
+## Создание нового отзыва
+POST http://localhost:5000/reviews HTTP/1.1
+Content-Type: application/json
+
+{
+  "author": "661ffa52db68976f5f55c68c",
+  "trainingId": "6620100b5fdea4a2c5fbaf98",
+  "rating": 4,
+  "text": "asdasdassssssqqeqeqwsd"
+}
+
+###
+
+## Получение списка отзывов 
+
+GET http://localhost:5000/reviews/6620100b5fdea4a2c5fbaf98 HTTP/1.1
+Content-Type: application/json
+
+###

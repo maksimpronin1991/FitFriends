@@ -54,9 +54,6 @@ export class TrainingController extends BaseController {
     { params }: Request,
     res: Response
   ){
-
-    
-
     const trainings = await this.trainingService.getTrainerTrainings(params.trainerId);
     this.ok(res, trainings);
   }

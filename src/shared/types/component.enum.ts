@@ -22,4 +22,5 @@ export const Component = {
   UserController: Symbol.for('UserController'),
   TrainingController: Symbol.for('TrainingController'),
   ReviewController: Symbol.for('ReviewController'),
+  PersonalTrainingController: Symbol.for('PersonalTrainingController'),
 } as const;     

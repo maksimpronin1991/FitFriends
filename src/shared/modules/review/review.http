@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ## Получение списка отзывов 
 
-GET http://localhost:5000/reviews/6620100b5fdea4a2c5fbaf98 HTTP/1.1
+GET http://localhost:5000/reviews/6620109dff7c72ed8ab53bf3 HTTP/1.1
 Content-Type: application/json
 
 ###
